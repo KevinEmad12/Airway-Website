@@ -32,6 +32,49 @@ overflow: hidden;
                  background-color: #04AA6D;
                  color: white;
              }
+            .footer {
+                 float: left;
+                 width: 100%;
+                position: fixed;
+                bottom:0%;
+                 background-color: #333;
+                 height: auto;
+            }
+            .footer a{
+             float: left;
+             color: #f2f2f2;
+             text-decoration:none;
+             text-align: left;
+             font-size:12px; 
+            }
+            .footer a:hover{        
+             color: #04AA6D;
+             text-decoration:underline;
+            }
+            .footer-right img{
+                float: right;
+                width:10%;  
+                height: 150%;
+               text-align: center;  
+            }
+            .footer p{
+                color: #f2f2f2;
+            }
+            
+            ::-webkit-scrollbar {
+            width: 20px;
+            }
+            ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey; 
+            border-radius: 10px;
+            }
+            ::-webkit-scrollbar-thumb {
+            background: #04AA6D; 
+            border-radius: 10px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+            background: #04AA6D; 
+            }
              
         </style>
         <title>Home Page</title>
@@ -49,6 +92,24 @@ overflow: hidden;
                 <a href="Sign Up"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
             </div>
         </div>
+        
+        <div class="footer">
+            <p>Lets stay connected</p>
+            <ul>
+            <li>
+               <a href="About.html"> About us</a>
+             </li>
+
+            <li>
+               <a href="Contact.html"> Contact us</a></li>
+                       
+            <li>
+                <a href="Rewards.html"> Rewards</a></li>
+             
+            </ul>
+            <div class="footer-right"><img src="skytrax-airline-covid19-logo.svg" alt="footer logo" >
+            </div>
+          </div>
     
     </body>
 </html>
