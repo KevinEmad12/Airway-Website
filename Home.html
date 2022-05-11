@@ -1,0 +1,139 @@
+<html>
+    <style>
+        button.MainBar,button.MainBarActive{
+            background-color: #5c0931;
+            padding: 10px 8px 10px 15px;
+            text-align: center;
+            font-size: 25px;
+            width: 300px;
+            border: 0px;
+        }
+        button.MainBar:hover{
+            background-color: #7f1b4e;
+        }
+        button.MainBarActive{
+            background-color: white;
+        }
+        .bar{
+            justify-content: center;
+            display: flex;
+        }
+        input.book[type=text],select.book,input.book,input.book[type=submit]{
+            padding: 20px;
+            width: 300px;
+            height: 75px;
+            border-width: 1px;
+            border-color: grey;
+            font-size: 25px;
+        }
+        .Form,.FormHidden{
+            background-color: #ffffff;
+            padding: 10px 8px 10px 15px;
+            text-align: center;
+            font-size: 0px;
+            width: 1177px;
+            height: 200px;
+            border: 0px;
+            border-radius: 0px 0px 25px 25px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .FormHidden{
+            display: none;
+        }
+        a.Redirect{
+            background-color: #5c0931;
+            border-radius: 25px 25px 25px 25px;
+            font: 25px;
+            text-decoration: none;
+            color: #000000;
+            padding: 15px;
+        }
+        a.Redirect:hover{
+            background-color: #7f1b4e;
+        }
+    </style>
+    <script>
+        function OpenTab(SelectedButton)
+        {
+            document.getElementById('button1').className = 'MainBar';
+            document.getElementById('button2').className = 'MainBar';
+            document.getElementById('button3').className = 'MainBar';
+            document.getElementById('button4').className = 'MainBar';
+            document.getElementById(SelectedButton).className='MainBarActive';
+            if(SelectedButton=='button1')
+            {
+                document.getElementById('Book').className = 'Form';
+                document.getElementById('CheckFlight').className = 'FormHidden';
+                document.getElementById('MyTripsFail').className = 'FormHidden';
+            }
+            if(SelectedButton=='button2')
+            {
+                document.getElementById('Book').className = 'FormHidden';
+                document.getElementById('CheckFlight').className = 'FormHidden';
+                if(false==false){
+                    document.getElementById('MyTripsFail').className = 'Form';
+                }
+                else{
+
+                }
+            }
+            if(SelectedButton=='button3')
+            {
+                document.getElementById('Book').className = 'FormHidden';
+                document.getElementById('CheckFlight').className = 'FormHidden';
+                document.getElementById('MyTripsFail').className = 'FormHidden';
+            }
+            if(SelectedButton=='button4')
+            {
+                document.getElementById('Book').className = 'FormHidden';
+                document.getElementById('CheckFlight').className = 'Form';
+                document.getElementById('MyTripsFail').className = 'FormHidden';
+            }
+        }
+    </script>
+    <head>
+    </head>
+    <body style="background-color:#dbdbdb; ">
+        <div class="bar">
+            <button id="button1" class="MainBarActive" onclick="OpenTab('button1')" style="border-radius: 25px  0px 0px 0px;">Book</button>
+            <button id="button2" class="MainBar" onclick="OpenTab('button2')">My Trips</button>
+            <button id="button3" class="MainBar" onclick="OpenTab('button3')">Book</button>
+            <button id="button4" class="MainBar" onclick="OpenTab('button4')" style="border-radius: 0px 25px 0px 0px;">Check Flight Details</button>
+        </div>
+        <div id="Book" class="Form">
+            <form>
+                <input class="book" type="text" name="From" style="border-radius: 25px  0px 0px 25px;" placeholder="From...">
+                <input class="book" type="text" name="To" placeholder="To...">
+                <select class="book" name="TripType">
+                    <option value="Direct">Direct flight</option>
+                    <option value="ReturnEarly">Return before 7 days</option>
+                    <option value="ReturnLate">Return after 7 days</option>
+                    <option value="Transit">Transit flight</option>
+                    <option value="Multiple">Multiple destinations</option>
+                </select>
+                <select class="book" name="NumberOfPassengers" style="width: 250px; border-radius: 0px  25px 25px 0px;">
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passenger</option>
+                    <option value="3">3 Passenger</option>
+                    <option value="4">4 Passenger</option>
+                    <option value="5">5 Passenger</option>
+                    <option value="6">6 Passenger</option>
+                </select>
+                <p style="font-size: large;"></p>
+                <input class="book" type="submit" value="Book" style="width: 200px; border-radius: 25px  25px 25px 25px; background-color: #5c0931;">
+            </form>
+        </div>
+        <div id="MyTripsFail" class="FormHidden">
+            <p style="font-size: 25px;">You need to be logged in to view your trips</p>
+            <a class="Redirect" href="" style="font-size: 25;">Click here to login</a>
+        </div>
+        <div id="CheckFlight" class="FormHidden">
+            <form>
+                <input class="book" type="text" name="Flight Code" style="border-radius: 25px  25px 25px 25px;" placeholder="Enter Flight Code">
+                <input class="book" type="submit" value="Show Flights" style="width: 200px; border-radius: 25px  25px 25px 25px; background-color: #5c0931; margin: 20px;">
+            </form>
+        </div>
+    </body>
+</html>
