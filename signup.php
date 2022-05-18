@@ -5,7 +5,7 @@
 
 <h1>SignUp</h1>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
   Name:<br>
   <input type="text" name="Name"><br> 
   first name:<br>
@@ -25,6 +25,7 @@
   <input type="text" name="email"><br>
   Password:<?php echo $passworderror; ?> <br>
   <input type="Password" name="password"><br>
+  Profile Picture:<input type="file" name="image" ><br> 
   <input type="submit" value="Submit" name="Submit">
   <input type="reset">
 </form>
@@ -50,7 +51,11 @@ $mobileError="";
 $passworderror="";
 
 if(isset($_POST["submit"])){ //check if form was submitted
-
+  
+	$image = $_FILES['image']['name'];
+	$target = "images/".$image;
+	move_uploaded_file($_FILES['image']['tmp_name'], $target);
+	
 	if(empty($_POST['email'])) //check if email is empty 
 	{
 		$emailError="Email is required";
@@ -86,13 +91,13 @@ $passworderror="";
 
 	else
 	{
-		$sql="INSERT INTO `user`(`NatID`, `Email`, `Password`, `Mobile`, `FirstName`, `LastName`, `Gender`, `DOB`, `Role`, `Address`) 
-		VALUES ('".$_POST[""]."','".$_POST["email"]."','".$_POST["password"]."]','".$_POST["mobile"]."','".$_POST["fname"]."','".$_POST["lname"]."','".$_POST["gender"]."','".$_POST[""]."','".$_POST[""]."','".$_POST["address"]."')";
+		$sql="INSERT INTO `user`(`NatID`, `Email`, `Password`, `Mobile`, `FirstName`, `LastName`, `Gender`, `DOB`, `Role`, `Address`,`Image`) 
+		VALUES ('".$_POST[""]."','".$_POST["email"]."','".$_POST["password"]."]','".$_POST["mobile"]."','".$_POST["fname"]."','".$_POST["lname"]."','".$_POST["gender"]."','".$_POST[""]."','".$_POST[""]."','".$_POST["address"]."','$image')";
 		
 		$result=mysqli_query($conn,$sql);
 		if($result)	
 		{
-			header("Location:home.php");
+			header("Location:HomePage.html");
 		}
 		else
 		{
