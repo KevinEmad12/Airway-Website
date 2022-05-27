@@ -7,211 +7,59 @@ session_start();
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="styles.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <link rel="stylesheet" href="AboutUsStyle.css">
+        <link rel="stylesheet" href="Styles2.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    
-    <title>Home Page</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style media="screen">
-            .topnav{
-                background-color: #333;
-                width: 100%;
-                display: fixed;
-                top: 0%;
-                left: 0%;
-                overflow:hidden;
-
-            }
-            .topnav a{
-
-                float: left;
-                display: block;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration:none;
-                font-size:17px;           
-             }
-             .topnav-right a{
-                float: right;
-                display: block;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration:none;
-                font-size:17px;           
-             }
-             .topnav a:hover{
-                 background-color:whitesmoke ;
-                 color: black;
-             }
-             .topnav a:active{
-                 background-color: #04AA6D;
-                 color: white;
-             }
-             *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-             }
-             body{
-                background: #fcfcfc;
-                font-family: sans-serif;
-                padding-bottom: auto ;
-                position: relative;
-                justify-content: space-between;
-            }
-            .flex-wrapper {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            justify-content: space-between;
-            }
-            .con
-            {
-                background-color: #fff;
-                border-radius: auto;
-                position: relative;
-                width:auto;
-                max-width: auto;
-                
-            }
-            footer{
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: #111;
-                height: absolute;
-                width: 100%;
-                padding-top: 40px;
-                color: #fff;
-                justify-content: space-between;
-            }
-            .footer-content{
-                display: inline-block;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-content h1{
-                text-align: center;
-                font-size: xx-large;
-                font-weight: 500;
-                text-transform: capitalize;
-                line-height: 30px;
-            }
-            .footer-content p{
-                max-width: auto;
-                margin: 10px auto;
-                line-height: 28px;
-                font-size: 14px;
-                color: #cacdd2;
-            }
-            .footer-content img {
-                display:block;                
-                flex-direction: row;
-            }
-            .footer-bottom{
-                background: #000;
-                width: auto;
-                padding: 20px;
-            padding-bottom: 30px;
-                
-            }
-            .footer-bottom p{
-                float: left;
-                font-size: 14px;
-                word-spacing: 2px;                    
-            }
-            .footer-bottom p a{
-            color:aqua;
-            font-size: 16px;
-            text-decoration: none;
-            }
-            .footer-menu{
-            float: right;
-
-            }
-            .footer-menu ul{
-            display: flex;
-            }
-            .footer-menu ul li{
-            padding-right: 10px;
-            display: block;
-            }
-            .footer-menu ul li a{
-            color: #cfd2d6;
-            text-decoration: none;
-            }
-            .footer-menu ul li a:hover{
-            color: aqua;
-            }
-            .socials{
-                
-                list-style: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin:10px 250px 30px 250px;
-            }
-            .socials li{
-                margin: 0 10px;
-            }
-            .socials a{
-                text-decoration: none;
-                color: #fff;
-                border: 1px solid white;
-                padding: 5px;
-
-                border-radius: 50%;
-
-            }
-            .socials a i{
-                font-size:medium;
-                width: 20px;
-
-
-            }
-            .socials a:hover i{
-                color: aqua;
-            }
-
-            ::-webkit-scrollbar {
-            width: 10px;
-            }
-            ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey; 
-            border-radius: 10px;
-            }
-            ::-webkit-scrollbar-thumb {
-            background: #04AA6D; 
-            border-radius: 10px;
-            }
-            ::-webkit-scrollbar-thumb:hover {
-            background: #04AA6D; 
-            }
-        </style>
-    
+        <title>About Us</title>
         <link rel="stylesheet" type="text/css" href="Menu.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    
-        <div class="topnav"> 
-            <a  href="home.html"><i class="fa fa-fw fa-home"></i>Home</a>
-            <a  href="contact.html"><i class="fa fa-fw fa-envelope"></i>Contact</a>
-            <a  href="Book.html"><i class="fa fa-plane" aria-hidden="true"></i> Book</a>
-            <a href="myBook.html"><i class="fa fa-calendar" aria-hidden="true"></i> My Trip</a>
-            <div class="topnav-right">
-                <a href="Sign In"><i class="fa fa-fw fa-user"></i>Login</a>
-                <a href="Sign Up"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
-            </div>
-        </div>
-        <br>
-        
+  </head>
+    <div class="topnav"> 
+      <a  href="home.html"><i class="fa fa-fw fa-home"></i>Home</a>
+      <a  href="contact.html"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+      <a  href="Book.html"><i class="fa fa-plane" aria-hidden="true"></i> Book</a>
+      <a href="myBook.html"><i class="fa fa-calendar" aria-hidden="true"></i> My Trip</a>
+      <div class="topnav-right">
+          <a href="Sign In"><i class="fa fa-fw fa-user"></i>Login</a>
+          <a href="Sign Up"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
+      </div>
+  </div>
+  <footer>
+      
+      <img class="footer-content" alt="smile" src="skytrax-airline-covid19-logo.svg" WIDTH=100 HEIGHT=80> 
+      <img class="footer-content" alt="smile" src="AirlineOftheYear2021.svg" WIDTH=100 HEIGHT=80> 
+      <img class="footer-content" alt="smile" src="Theqa_logo_SVG.svg" width="125" height="50">
+                  <div class="footer-content">
+          <h1>Welcome to our website</h1>
+          <br><br>
+          <p>Let's stay connected</p> 
+          
+          <ul class="socials">
+              <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a></li>
+          </ul>
+
+      </div>
+                                     
+      <iframe style="text-align:right" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.450024542732!2d31.3966993145951!3d30.109933622431942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581771026121f9%3A0xa38d42c793391a6a!2sAirport!5e0!3m2!1sen!2seg!4v1652309091653!5m2!1sen!2seg" width="250" height="100"></iframe>
+
+      <div class="footer-bottom">
+          <p>EGWay. All rights reserved</p>
+                  <div class="footer-menu">
+                    <ul class="f-menu">
+                      <li><a href="HomePage.html">Home</a></li>
+                      <li><a href="Contact.html">Contact</a></li>
+                      
+                    </ul>
+                  </div>
+      </div>
+  </footer>
 
         <div class="flex-wrapper">
         <body>
@@ -268,41 +116,6 @@ session_start();
             <button class="MainBar" onclick="ShowTheFlight()" style="border-radius: 25px  25px 25px 25px;">Show Flight</button>
         </div>
         </body>
-        <footer>
-            <img class="footer-content" alt="smile" src="skytrax-airline-covid19-logo.svg" WIDTH=100 HEIGHT=80> 
-            <img class="footer-content" alt="smile" src="AirlineOftheYear2021.svg" WIDTH=100 HEIGHT=80> 
-            <img class="footer-content" alt="smile" src="Theqa_logo_SVG.svg" width="125" height="50">
-                        
-            <div class="footer-content">
-                <h1>Welcome to our website</h1>
-                <br><br>
-                <p>Let's stay connected</p> 
-                
-                    <ul class="socials">
-                    <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a></li>
-                </ul>
-
-            </div>
-                                           
-            <iframe style="text-align:right" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.450024542732!2d31.3966993145951!3d30.109933622431942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581771026121f9%3A0xa38d42c793391a6a!2sAirport!5e0!3m2!1sen!2seg!4v1652309091653!5m2!1sen!2seg" width="250" height="100"></iframe>
-
-            <div class="footer-bottom">
-                <p>EGWay. All rights reserved</p>
-                        <div class="footer-menu">
-                          <ul class="f-menu">
-                            <li><a href="HomePage.html">Home</a></li>
-                            <li><a href="About.html">About</a></li>
-                            <li><a href="Contact.html">Contact</a></li>
-                            
-                          </ul>
-                        </div>
-            
-            </div>
-            </footer>
-   
     </div>
     <?php
         $_SESSION["User"]="Guest";
