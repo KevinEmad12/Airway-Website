@@ -41,7 +41,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "lab06";
+$dbname = "egway" ;
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
