@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="registerCSS.css">
+    </head>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <div class="form">
+
+                <h1>Create Account</h1>
+                <input type="text" id="new_name" placeholder="Name" />
+                <input type="email" id="new_email" placeholder="Email" />
+                <input type="password" id="new_password" placeholder="Password" />
+                <input type="text" id="new_id" placeholder="National ID number" />
+                <input type="file" id="new_pic" accept="image/png, image/jpeg">
+
+                    <label for="familysb">Family members:</label>
+                    <select id="familysb">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                    <br>
+                    <button id="familyadd" onclick="familyfunction()">add</button>
+                    <br><br>
+                    <div id="divfamily">
+
+                    </div>
+                    <button>Sign Up</button>
+                </div>
+            
+        </div>
+        <div class="form-container sign-in-container">
+            <form method="GET">
+                <h1>Sign in</h1>
+                <input type="email" id="email" placeholder="Email" />
+                <input type="password" id="password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Already a member? Sign in</h1>
+                    <p>login with your personal info</p>
+                    <button class="ghost" id="signIn" onclick="y()">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Dont have account? Sign Up</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp" onclick="x()" >Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+        function familyfunction() 
+        {
+            document.getElementById("divfamily").innerHTML = "";
+            const valuef = document.getElementById("familysb").value;
+            for(var i = 0;i<valuef;i++)
+            {
+                var fpic = document.createElement("input");
+                fpic.setAttribute("type", "file");
+                fpic.setAttribute("name", "familypic");
+                document.getElementById("divfamily").append(fpic);
+            }
+            
+        };
+
+function x(){
+	container.classList.add("right-panel-active");
+}
+
+
+function y(){
+	container.classList.remove("right-panel-active");
+}
+
+
+
+    </script>
+    
+</html>
+
