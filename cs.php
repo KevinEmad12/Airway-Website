@@ -19,23 +19,50 @@ $dbname = "egway";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$query= "SELECT * from users where cs_status is NULL ";
+$query= "SELECT * FROM `users` WHERE `role` = 'cs' ";
 $result= mysqli_query($conn,$query);
 $req_count=mysqli_num_rows($result);
 if($req_count>0){
+    ?>
+   
+  <table  class="table table-striped table-hover table-bordered">
+    <tr>
+<th>Full name</th>
+<th>NatID</th>
+<th>role</th>
+<th>date/time</th>
+<th>comment</th>
+<th>Enable</th>
+<th>Disable</th>
+<th>promote</th>
+
+
+
+    </tr>
+    <?php
     while($row = $result->fetch_assoc()){
         ?>
 
-    <h1 ><?php echo $row['Full Name'] ?></h1>
-      <p ><?php echo $row['NatID'] ?></p>
-      <p ><?php echo $row['role'] ?></p>
+   
+    <tr id="<?php echo $row["natid"] ;?>">
+    <td> <h4 ><?php echo $row['Full Name'] ?></h4> </td>
+      <td> <p ><?php echo $row['natid'] ?></p> </td>
+      <td><p ><?php echo $row['role'] ?></p> </td>
+      <td>   <small><i><?php echo $row['date_time'] ?></i></small>  </td>
+<td><textarea id="text"> </textarea></td>
       <p>
-        <button value="<?php echo $row["NatID"] ;?>" onclick=accept() >Accept</button>
-        <button value="<?php echo $row["NatID"] ;?>" onclick=reject() >Reject</button>
+     <td>   <button type="button" class="btn btn-success" value="<?php echo $row["natid"] ;?>" onclick=accept() >Enable</button> </td>
+     <td>   <button type="button" class="btn btn-danger" value="<?php echo $row["natid"] ;?>" onclick=reject() >Disable</button> </td>
+     <td>   <button type="button" class="btn btn-success" value="<?php echo $row["natid"] ;?>" onclick=promote() >promote</button> </td>
       </p>
-    <small><i><?php echo $row['date_time'] ?></i></small>
+   
+    </tr>
+    
 <?php
-    }
+    } ?>
+</table>
+
+<?php
 }else{
     echo "No Pending Requests.";
 }
@@ -65,12 +92,12 @@ function accept() { let x= event.target.value;
 }
 
 function reject() { let x= event.target.value;
-
+let tex=document.getElementById(text).innerText;
 $.ajax({
      type: "POST",
      url: 'qc_cs_reject.php',
      data: {
-      i:x 
+      i:x , y:tex
      },
      success:function(data)
               {
