@@ -8,7 +8,7 @@
     echo($_GET['TripType']);
     echo("</span>");
 ?>
-Flight from 
+ Flight from 
 <?php 
     echo("<span id='From'>");
     echo($_GET['From']);
@@ -27,6 +27,11 @@ Flight from
     echo("</span>");
 ?>
  Passengers
+ <?php 
+    echo("<span id='Date'>");
+    echo($_GET['date']);
+    echo("</span>");
+?>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
@@ -38,26 +43,30 @@ Flight from
                 type:"GET",
                 success:function(data)
                 {
-                    alert("hi");                        
+                    alert("Successfully Booked");                        
                 }
             }
         );
-        // if(document.getElementById('TripType').innerHTML=='Direct')
-        // {
-        //     location.href = "Cart.php";
-        // }
-        // if(document.getElementById('TripType').innerHTML=='ReturnEarly')
-        // {
-        //     let From=document.getElementById('To').innerHTML;
-        //     let To=document.getElementById('From').innerHTML;
-        //     location.href = "http://localhost/EGWay/Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers=1";
-        // }
-        // if(document.getElementById('TripType').innerHTML=='ReturnLate')
-        // {
-        //     let From=document.getElementById('To').innerHTML;
-        //     let To=document.getElementById('From').innerHTML;
-        //     location.href = "http://localhost/EGWay/Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers=1";
-        // }
+        if(document.getElementById('TripType').innerHTML=='Direct')
+        {
+            location.href = "Cart.php";
+        }
+        if(document.getElementById('TripType').innerHTML=='ReturnEarly')
+        {
+            let From=document.getElementById('To').innerHTML;
+            let To=document.getElementById('From').innerHTML;
+            let NumP=document.getElementById('NumberOfPassengers').innerHTML;
+            let date=document.getElementById('Date').innerHTML;
+            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&ReSub=1&date="+date;
+        }
+        if(document.getElementById('TripType').innerHTML=='ReturnLate')
+        {
+            let From=document.getElementById('To').innerHTML;
+            let To=document.getElementById('From').innerHTML;
+            let NumP=document.getElementById('NumberOfPassengers').innerHTML;
+            let date=document.getElementById('Date').innerHTML;
+            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&ReSub=1&date="+date;
+        }
     }
 </script>
 <?php
@@ -67,7 +76,12 @@ Flight from
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT FlightCode, FromAirPort, Destination, TripStatus FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' ";
+    // if(isset($_GET['ReSub']))
+    //     $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date='".$_GET['date']."'";
+    else if($_GET['date']!=NULL)
+        $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date='".$_GET['date']."'";
+    else
+        $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
@@ -76,12 +90,13 @@ Flight from
         echo"<div class='FlightCard'>";
         echo"<div style='text-align: center;'>Flight Details</div>";
         echo "<span style='text-align: left;'> Flight Code:".$row['FlightCode']."</span>";
-        echo "<span style='float:right;'> TripStatus: " . $row["TripStatus"]."</span>";
-        echo "<br>";
+        echo "<span style='float:right;'> TripDate: " . $row["f_date"]."</span>";
         echo "<br>";
         echo "<br>";
         echo "<span style='text-align: left;'> Destination: " . $row["Destination"]."</span>";
         echo "<span style='float:right;'> FromAirPort: " . $row["FromAirPort"]."</span>";
+        echo "<br>";
+        echo "<div style='text-align: center;'> Price: " . $row["price"]."</div>";
         echo "</div>";
         echo "<br>";
         }
