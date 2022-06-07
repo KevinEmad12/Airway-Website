@@ -2,71 +2,49 @@
 // Start the session
 session_start();
 ?>
+
 <html>
-<title>Home Page</title>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="AboutUsStyle.css">
-    <link rel="stylesheet" href="Styles2.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>About Us</title>
-        <link rel="stylesheet" type="text/css" href="Menu.css">
-  </head>
-    <div class="topnav"> 
-      <a  href="home.html"><i class="fa fa-fw fa-home"></i>Home</a>
-      <a  href="contact.html"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="Styles2.css">
+        
+</head>
+
+<body>
+
+
+<title>Home Page</title>
+
+    <a href="Home.php"><div class="topnav"> 
+        <div >
+      <img  class="logo-image" src="img/logo.jfif">
+</div></a>
+      <a  href="Home.php"><i class="fa fa-fw fa-home"></i>Home</a>
+      <a  href="Help.html"><i class="fa fa-fw fa-envelope"></i>Contact</a>
       <a  href="Book.html"><i class="fa fa-plane" aria-hidden="true"></i> Book</a>
-      <a href="myBook.html"><i class="fa fa-calendar" aria-hidden="true"></i> My Trip</a>
+      <a href="FlightSearchAid.php"><i class="fa fa-calendar" aria-hidden="true"></i> My Trip</a>
       <div class="topnav-right">
-          <a href="Sign In"><i class="fa fa-fw fa-user"></i>Login</a>
-          <a href="Sign Up"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
+          <a href="registerHTML.html"><i class="fa fa-fw fa-user"></i>Sign up | Login</a>
       </div>
-  </div>
-  <footer>
-      
-      <img class="footer-content" alt="smile" src="skytrax-airline-covid19-logo.svg" WIDTH=100 HEIGHT=80> 
-      <img class="footer-content" alt="smile" src="AirlineOftheYear2021.svg" WIDTH=100 HEIGHT=80> 
-      <img class="footer-content" alt="smile" src="Theqa_logo_SVG.svg" width="125" height="50">
-                  <div class="footer-content">
-          <h1>Welcome to our website</h1>
-          <br><br>
-          <p>Let's stay connected</p> 
-          
-          <ul class="socials">
-              <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-              <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a></li>
-          </ul>
-
-      </div>
-                                     
-      <iframe style="text-align:right" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.450024542732!2d31.3966993145951!3d30.109933622431942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581771026121f9%3A0xa38d42c793391a6a!2sAirport!5e0!3m2!1sen!2seg!4v1652309091653!5m2!1sen!2seg" width="250" height="100"></iframe>
-
-      <div class="footer-bottom">
-          <p>EGWay. All rights reserved</p>
-                  <div class="footer-menu">
-                    <ul class="f-menu">
-                      <li><a href="HomePage.html">Home</a></li>
-                      <li><a href="Contact.html">Contact</a></li>
-                      
-                    </ul>
-                  </div>
-      </div>
-  </footer>
-
-        <div class="flex-wrapper">
-        <body>
+    </div>
+  
+    <div class="bodyx">
         <div class="bar">
             <button id="button1" class="MainBarActive" onclick="SwitchMainTabs('button1')" style="border-radius: 25px  0px 0px 0px;">Book</button>
             <button id="button2" class="MainBar" onclick="SwitchMainTabs('button2')">My Trips</button>
             <button id="button3" class="MainBar" onclick="SwitchMainTabs('button3')">Reservation Details</button>
             <button id="button4" class="MainBar" onclick="SwitchMainTabs('button4')" style="border-radius: 0px 25px 0px 0px;">Check Flight Details</button>
         </div> 
+        <div id="UserName" style="font-size: 0px; padding:0px; margin:0px;"><?php echo($_SESSION["User"]); ?></div>
         <div id="Book" class="Form">
             <form method="GET" action="Trips.php">
                 <input class="book" required="required" id="CityFrom" list="From" name="From" style="border-radius: 25px  0px 0px 25px;" placeholder="From..." onkeyup="FromC()">
@@ -75,6 +53,7 @@ session_start();
                 <input class="book" required="required" id="CityTo" list="To" name="To" style="border-radius: 0px  0px 0px 0px;" placeholder="To..." onkeyup="ToC()">
                 <datalist id="To">
                 </datalist>
+                <input class="book" type="date" name="date" min="<?php echo date('Y-m-d'); ?>" />
                 <select class="book" name="TripType">
                     <option value="Direct">Direct flight</option>
                     <option value="ReturnEarly">Return before 7 days</option>
@@ -113,12 +92,125 @@ session_start();
             <input id="FCode" class="book" type="text" name="FlightCode" style="border-radius: 25px  25px 25px 25px;" placeholder="Enter Flight Code">
             <button class="MainBar" onclick="ShowTheFlight()" style="border-radius: 25px  25px 25px 25px;">Show Flight</button>
         </div>
-        </body>
     </div>
-    <?php
-        $_SESSION["User"]="Guest";
-    ?>
-    <script>
+
+<div class = "bodyx">
+<div class="container" style="width:55%">
+ 
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="img/slider-1.jpg" href="Book.html" alt="Norway" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Norway</h3>
+          <p href="Book.html">The best view you can see!</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="img/slider-2.jpg" href="Book.html" alt="Japan" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Japan</h3>
+          <p>The difference in prespectives!</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="img/slider-3.jpg" href="Book.html" alt="Iceland" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Iceland</h3>
+          <p>Catch our latest offers now to one of the best places!</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+</div>
+
+<hr style="border-top: 4px dashed white;">
+
+<section style="border-radius: 30px  30px 30px 30px;" class="subscribe-area pb-50 pt-70">
+<div class="container">
+	<div class="row">
+	<div class="col-md-4">
+		<div class="subscribe-text">
+				<span>JOIN OUR NEWSLETTER</span>
+				<h2>Don't miss our offers!</h2>
+				</div>
+					</div>
+				     <div>
+				<div class="subscribe-wrapper subscribe2-wrapper">
+				<div class="subscribe-form">
+				<form action="#">
+				<input type="email" placeholder="  Enter Your Email Address...">
+				<button>Subscribe <i class="fas fa-long-arrow-alt-right"></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>				
+
+</div>
+</section>
+</body>
+
+<footer>
+    <div>
+      <img class="footer-content" alt="smile" src="img/skytrax-airline-covid19-logo.svg" WIDTH=90 HEIGHT=100> 
+      <img class="footer-content" alt="smile" src="img/AirlineOftheYear2021.svg" WIDTH=100 HEIGHT=90> 
+      <img class="footer-content" alt="smile" src="img/Theqa_logo_SVG.svg" width="125" height="50">
+      <div class="footer-content">
+          <h1 style="color:white">Welcome to our website</h1>
+          <br>
+          <br>
+          <p style="color:white">Let's stay connected</p> 
+          
+          <ul class="socials">
+              <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a></li>
+          </ul>
+
+        </div>
+                                     
+      <iframe style="text-align:right;margin: right 1000px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.450024542732!2d31.3966993145951!3d30.109933622431942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581771026121f9%3A0xa38d42c793391a6a!2sAirport!5e0!3m2!1sen!2seg!4v1652309091653!5m2!1sen!2seg" width="250" height="100"></iframe>
+
+      <div class="footer-bottom">
+          <p style="color:white">EGWay. All rights reserved</p>
+                  <div class="footer-menu">
+                    <ul class="f-menu">
+                      <li><a href="AboutUs.html">About us</a></li>
+                      <li><a href="Help.html">Contact</a></li>
+                      
+                    </ul>
+                  </div>
+      </div>
+      </div>   
+  </footer>
+
+
+<script>
         function SwitchMainTabs(SelectedButton)
         {
             document.getElementById('button1').className = 'MainBar';
@@ -223,10 +315,10 @@ session_start();
                     type:"GET",
                     success:function(data)
                     {
-                        document.getElementById("To").innerHTML = data;                        
+                        document.getElementById("To").innerHTML = data;
                     }
                 }
             );
         }
         </script>
-</html>
+        </html>
