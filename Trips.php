@@ -66,7 +66,6 @@
             FC1=document.getElementById('f_code').innerHTML;
             FC2=document.getElementById('f_code2').innerHTML;
             FC3=Flight;
-            alert(Flight);
         }
         else if(document.getElementById('f_code')!=null)
         {
@@ -80,7 +79,6 @@
             FC2="";
             FC3="";
         }
-        alert("FCode="+FC1+"&NumOfPassengers="+document.getElementById('NumberOfPassengers').innerHTML+"&FCode2="+FC2+"&FCode3="+FC3);
         if(document.getElementById('TripType').innerHTML=='Direct')
         {
             jQuery.ajax(
