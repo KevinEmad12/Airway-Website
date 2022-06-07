@@ -32,14 +32,57 @@
     echo($_GET['date']);
     echo("</span>");
 ?>
+<?php 
+    if(isset($_GET['FCode']))
+    {
+        echo("<span id='f_code'>");
+        echo($_GET['FCode']);
+        echo("</span>");
+    }
+?>
+<?php 
+    if(isset($_GET['FCode2']))
+    {
+        echo("<span id='f_code2'>");
+        echo($_GET['FCode2']);
+        echo("</span>");
+    }
+?>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function AddToCart(Flight) {
-        jQuery.ajax(
+        let str =document.getElementById('Date').innerHTML;
+        let dat = new Date(str);
+        dat.setDate(dat.getDate() + 7);
+        alert(dat);
+        let FC1;
+        let FC2;
+        let FC3;
+        if(document.getElementById('f_code2')!=null)
+        {
+            FC1=f_code1;
+            FC2=f_code2;
+            FC3=Flight;
+        }
+        else if(document.getElementById('f_code')!=null)
+        {
+            FC1=document.getElementById('f_code').innerHTML;
+            FC2=Flight;
+            FC3="";
+        }
+        else
+        {
+            FC1=Flight;
+            FC2="";
+            FC3="";
+        }
+        if(document.getElementById('TripType').innerHTML=='Direct')
+        {
+            jQuery.ajax(
             {
                 url:"AddToCart.php",
-                data:"FCode="+Flight+"&NumOfPassengers="+document.getElementById('NumberOfPassengers').innerHTML,
+                data:"FCode="+FC1+"&NumOfPassengers="+document.getElementById('NumberOfPassengers').innerHTML+"&FCode2="+FC2+"&FCode3="+FC3,
                 type:"GET",
                 success:function(data)
                 {
@@ -47,8 +90,6 @@
                 }
             }
         );
-        if(document.getElementById('TripType').innerHTML=='Direct')
-        {
             location.href = "Cart.php";
         }
         if(document.getElementById('TripType').innerHTML=='ReturnEarly')
@@ -57,7 +98,7 @@
             let To=document.getElementById('From').innerHTML;
             let NumP=document.getElementById('NumberOfPassengers').innerHTML;
             let date=document.getElementById('Date').innerHTML;
-            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&ReSub=1&date="+date;
+            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+dat+"&T=b";
         }
         if(document.getElementById('TripType').innerHTML=='ReturnLate')
         {
@@ -65,7 +106,7 @@
             let To=document.getElementById('From').innerHTML;
             let NumP=document.getElementById('NumberOfPassengers').innerHTML;
             let date=document.getElementById('Date').innerHTML;
-            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&ReSub=1&date="+date;
+            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+dat+"&T=a";
         }
     }
 </script>
@@ -76,8 +117,14 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    // if(isset($_GET['ReSub']))
-    //     $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date='".$_GET['date']."'";
+    if(isset($_GET['T']))
+    {
+        if($_GET['T']=='b')
+            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date >'".$_GET['date']."'";
+        if($_GET['T']=='a')
+            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date <'".$_GET['date']."'";
+
+    }
     else if($_GET['date']!=NULL)
         $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date='".$_GET['date']."'";
     else
