@@ -52,18 +52,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function AddToCart(Flight) {
-        let str =document.getElementById('Date').innerHTML;
-        let dat = new Date(str);
-        dat.setDate(dat.getDate() + 7);
-        alert(dat);
+        if(document.getElementById('Date').innerHTML!="")
+        {
+            let str =document.getElementById('Date').innerHTML;
+            let dat = new Date(str);
+            dat.setDate(dat.getDate() + 7);
+        }
         let FC1;
         let FC2;
         let FC3;
         if(document.getElementById('f_code2')!=null)
         {
-            FC1=f_code1;
-            FC2=f_code2;
+            FC1=document.getElementById('f_code').innerHTML;
+            FC2=document.getElementById('f_code2').innerHTML;
             FC3=Flight;
+            alert(Flight);
         }
         else if(document.getElementById('f_code')!=null)
         {
@@ -77,6 +80,7 @@
             FC2="";
             FC3="";
         }
+        alert("FCode="+FC1+"&NumOfPassengers="+document.getElementById('NumberOfPassengers').innerHTML+"&FCode2="+FC2+"&FCode3="+FC3);
         if(document.getElementById('TripType').innerHTML=='Direct')
         {
             jQuery.ajax(
@@ -97,7 +101,6 @@
             let From=document.getElementById('To').innerHTML;
             let To=document.getElementById('From').innerHTML;
             let NumP=document.getElementById('NumberOfPassengers').innerHTML;
-            let date=document.getElementById('Date').innerHTML;
             location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+dat+"&T=b";
         }
         if(document.getElementById('TripType').innerHTML=='ReturnLate')
@@ -105,8 +108,17 @@
             let From=document.getElementById('To').innerHTML;
             let To=document.getElementById('From').innerHTML;
             let NumP=document.getElementById('NumberOfPassengers').innerHTML;
-            let date=document.getElementById('Date').innerHTML;
             location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+dat+"&T=a";
+        }
+        if(document.getElementById('TripType').innerHTML=='Multiple')
+        {
+            let From=document.getElementById('To').innerHTML;
+            let To=document.getElementById('From').innerHTML;
+            let NumP=document.getElementById('NumberOfPassengers').innerHTML;
+            if(document.getElementById('f_code')==null)
+                location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Multiple&NumberOfPassengers="+NumP+"&FCode="+FC1+"&date=";
+            else
+                location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+FC1+"&FCode2="+FC2+"&date=";
         }
     }
 </script>

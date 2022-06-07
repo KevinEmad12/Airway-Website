@@ -32,7 +32,7 @@
                 echo "<span style='float:right;'> Flight 2 Code: " . $row["f_code2"]."</span>";
             echo"<br>";
             if($row['f_code3']!=NULL)
-                echo "<span style='text-align: left;'> Flight 2 Code: " . $row["f_code3"]."</span>";
+                echo "<span style='text-align: left;'> Flight 3 Code: " . $row["f_code3"]."</span>";
             echo "</div>";
             echo "<br>";
         }
