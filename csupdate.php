@@ -49,7 +49,7 @@ while($row = mysqli_fetch_array($result))
 	<td><?= $row['f_code2']; ?></td>
     <td><?= $row['f_code3']; ?></td>
     <td><?= $row['date']; ?></td>
-<td><a href="updateaction.php?id=<?php echo $row["id"]; ?>">Edit</a></td>
+<td><a href="csupdateaction.php?id=<?php echo $row["id"]; ?>">Edit</a></td>
 </tr>
 <?php
     $i++;
