@@ -161,8 +161,8 @@ session_start();
 				     <div>
 				<div class="subscribe-wrapper subscribe2-wrapper">
 				<div class="subscribe-form">
-				<form action="#">
-				<input type="email" placeholder="  Enter Your Email Address...">
+				<form method="POST">
+				<input type="email" id="email" name="email" placeholder="  Enter Your Email Address...">
 				<button>Subscribe <i class="fas fa-long-arrow-alt-right"></i></button>
 				</form>
 			</div>
@@ -320,5 +320,19 @@ session_start();
                 }
             );
         }
+        $("form").on("submit", function (e) {
+    var dataString = $(this).serialize();
+     
+    $.ajax({
+      type: "POST",
+      url: "NewsLetter.php",
+      data: dataString,
+      success: function () {
+        alert("Subscribed!");
+      }
+    });
+ 
+    e.preventDefault();
+});
         </script>
         </html>
