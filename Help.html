@@ -33,18 +33,20 @@
             <img src="img/Contact.webp" style="width:100%">
           </div>
           <div class="column-contact">
-            <form action="/action_page.php">
+            <form method="POST">
               <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" required="required"placeholder="Your name..">
+              <input type="text" id="fname" name="firstname" required="required" placeholder="Your name..">
               <label for="lname">Last Name</label>
               <input type="text" id="lname" name="lastname" required="required" placeholder="Your last name..">
-              <label for="country">Country</label>
-                <input type="text" name="From"  required="required" id="City" list="FromC" placeholder="Country..." onkeyup="Country()">
+              <label for="country">City</label>
+                <input type="text" name="FromC"  required="required" id="City" list="FromC" placeholder="Country..." onkeyup="Country()">
                 <datalist id="FromC">
                 </datalist>
-              <label for="subject">Subject (Otional)</label>
-              <textarea id="subject" name="subject" optional="optional" placeholder="Write something.." style="height:170px"></textarea>
-              <input class="button" type="submit" value="Submit">
+                <label for="email">Email</label>
+              <input type="email" id="email" name="email" required="required" placeholder="Your email..">
+              <label for="subject">Subject (Optional)</label>
+              <textarea id="subject" name="subject" optional="optional" placeholder="Write something..(500 char)" maxlength="500" style="height:170px"></textarea>
+              <input class="button" id="submit" type="submit" value="Submit" onclick="ShowAlert()">
             </form>
           </div>
         </div>
@@ -93,11 +95,26 @@
                     type:"GET",
                     success:function(data)
                     {
-                        document.getElementById("FromC").innerHTML = data;                        
+                        document.getElementById("FromC").innerHTML = data;                     
                     }
                 }
             );
         }
+
+$("form").on("submit", function (e) {
+    var dataString = $(this).serialize();
+     
+    $.ajax({
+      type: "POST",
+      url: "ContactUs.php",
+      data: dataString,
+      success: function () {
+        alert("Data Added Successfully");
+      }
+    });
+ 
+    e.preventDefault();
+});
   </script>
     
 </html>
