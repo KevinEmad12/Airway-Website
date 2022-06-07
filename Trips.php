@@ -52,6 +52,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function AddToCart(Flight) {
+        let str=document.getElementById('Date').innerHTML;
         if(document.getElementById('Date').innerHTML!="")
         {
             let str =document.getElementById('Date').innerHTML;
@@ -99,14 +100,14 @@
             let From=document.getElementById('To').innerHTML;
             let To=document.getElementById('From').innerHTML;
             let NumP=document.getElementById('NumberOfPassengers').innerHTML;
-            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+dat+"&T=b";
+            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+str;
         }
         if(document.getElementById('TripType').innerHTML=='ReturnLate')
         {
             let From=document.getElementById('To').innerHTML;
             let To=document.getElementById('From').innerHTML;
             let NumP=document.getElementById('NumberOfPassengers').innerHTML;
-            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+dat+"&T=a";
+            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+str;
         }
         if(document.getElementById('TripType').innerHTML=='Multiple')
         {
@@ -130,9 +131,9 @@
     if(isset($_GET['T']))
     {
         if($_GET['T']=='b')
-            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date >'".$_GET['date']."'";
+            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date ='".$_GET['date']."'";
         if($_GET['T']=='a')
-            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date <'".$_GET['date']."'";
+            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date ='".$_GET['date']."'";
     }
     else if($_GET['date']!=NULL)
         $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date='".$_GET['date']."'";
