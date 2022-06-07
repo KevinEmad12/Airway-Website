@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2022 at 09:03 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Generation Time: Jun 07, 2022 at 08:30 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `egway`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactus`
+--
+
+CREATE TABLE `contactus` (
+  `Fname` varchar(20) NOT NULL,
+  `Lname` varchar(20) NOT NULL,
+  `Country` varchar(30) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Subject` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactus`
+--
+
+INSERT INTO `contactus` (`Fname`, `Lname`, `Country`, `Email`, `Subject`) VALUES
+('Kevin', 'Emad', 'Egypt', 'kevinemad3@gmail.com', 'Hello'),
+('Kevin', 'Emad', 'Egypt', 'kevinemad3@gmail.com', 'Hello'),
+('Samuel', 'Nabil', 'Egypt', 'Samuel@nabil.com', 'Hello'),
+('Kevin', 'Emad', 'Egypt', 'Samuel@nabil.com', 'sadsad'),
+('Kevin', 'Emad', 'Egypt', 'Samuel@nabil.com', 'sads'),
+('Samuel', 'Nabil', 'london', 'Samuel', 'Hello2'),
+('Kevin', 'Nabil', 'Egypt', 'kevin', 'adsa');
 
 -- --------------------------------------------------------
 
@@ -60,6 +87,25 @@ CREATE TABLE `reservations` (
 INSERT INTO `reservations` (`name`, `rev_num`, `f_code`, `f_code2`, `f_code3`, `rate`, `comment`, `cancel`, `date`, `f_date`) VALUES
 ('', '', 'CA0001LOD', '', '', NULL, NULL, NULL, '2022-05-22 05:07:26', NULL),
 ('Guest', '', 'CA0002LO', '', '', NULL, NULL, NULL, '2022-06-06 08:51:43', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscriptions`
+--
+
+CREATE TABLE `subscriptions` (
+  `email` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subscriptions`
+--
+
+INSERT INTO `subscriptions` (`email`) VALUES
+('kevin2000839@miuegyp'),
+('kevinemad3@gmail.com'),
+('Samuel@nabil.com');
 
 -- --------------------------------------------------------
 
@@ -127,6 +173,12 @@ INSERT INTO `users` (`Full Name`, `Email`, `Password`, `natid`, `phone_num`, `ad
 --
 ALTER TABLE `family`
   ADD PRIMARY KEY (`guardian_natid`);
+
+--
+-- Indexes for table `subscriptions`
+--
+ALTER TABLE `subscriptions`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indexes for table `trips`
