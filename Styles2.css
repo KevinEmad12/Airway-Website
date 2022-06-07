@@ -320,6 +320,14 @@ button.CartButton:hover{
 /* Contact Us Page*/
   
   /* Style inputs */
+  input[type=email], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
   input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -388,7 +396,14 @@ html {
   .subscribe-area {
     background-image: linear-gradient(to top, #5c0931 0%, #5c0931 100%);
     }
-
+    
+    .pb-50 {
+        padding-bottom: 50px;
+    }
+    .pt-70 {
+        padding-top: 70px;
+    }
+    
     .subscribe-text span {
         font-size: 12px;
         font-weight: 700;
