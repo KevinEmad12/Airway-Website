@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="Styles2.css">
 </head>
@@ -34,15 +35,15 @@
           <div class="column-contact">
             <form action="/action_page.php">
               <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+              <input type="text" id="fname" name="firstname" required="required"placeholder="Your name..">
               <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+              <input type="text" id="lname" name="lastname" required="required" placeholder="Your last name..">
               <label for="country">Country</label>
                 <input type="text" name="From"  required="required" id="City" list="FromC" placeholder="Country..." onkeyup="Country()">
                 <datalist id="FromC">
                 </datalist>
-              <label for="subject">Subject</label>
-              <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+              <label for="subject">Subject (Otional)</label>
+              <textarea id="subject" name="subject" optional="optional" placeholder="Write something.." style="height:170px"></textarea>
               <input class="button" type="submit" value="Submit">
             </form>
           </div>
