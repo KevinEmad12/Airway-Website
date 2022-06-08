@@ -7,7 +7,7 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT rev_num, f_code, f_code2, f_code3, f_date FROM reservations WHERE name='".$_SESSION['User']."'";
+    $sql = "SELECT rev_num, f_code, f_code2, f_code3, price FROM reservations WHERE name='".$_SESSION['User']."'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $count=0;
@@ -33,6 +33,8 @@
             echo"<br>";
             if($row['f_code3']!=NULL)
                 echo "<span style='text-align: left;'> Flight 3 Code: " . $row["f_code3"]."</span>";
+            echo"<br>";
+            echo "<span style='text-align: left;'> Price: " . $row["price"]."</span>";
             echo "</div>";
             echo "<br>";
         }
