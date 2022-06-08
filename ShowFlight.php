@@ -14,13 +14,13 @@
           {
             echo"<div class='FlightCardTopBar'></div>";
             echo"<div class='FlightCard'>";
-            echo"<div style='text-align: center;'>Flight Details</div>";
-            echo "<span style='text-align: left;'> Flight Code: " . $row["FlightCode"]. " </span>";
-            echo "<span style='text-align: left;'> Destination: " . $row["Destination"]. " </span>";
+            echo "<span style='text-align: center;'> Flight Code: " . $row["FlightCode"]. " </span>";
+            echo"<br>";
+            echo "<span style='float:left; text-align: left;'> Destination: " . $row["Destination"]. " </span>";
             echo "<span style='float:right;'> FromAirPort: " . $row["FromAirPort"]. " </span>";
-            echo "<br>";
+            echo"<br>";
+            echo "<span style='float:left; text-align: left;'> date: " . $row["f_date"]. " </span>";
             echo "<span style='float:right;'> price: " . $row["price"]. " </span>";
-            echo "<span style='float:right;'> date: " . $row["f_date"]. " </span>";
             echo "</div>";
           }
         } 
