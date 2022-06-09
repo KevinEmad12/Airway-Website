@@ -1,9 +1,21 @@
 <html>
 <link rel="stylesheet" href="styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function Remove(ID)
     {
-        
+        jQuery.ajax(
+            {
+                url:"Remove.php",
+                data:"REVCode="+ID,
+                type:"GET",
+                success:function(data)
+                {
+                    alert("Removed Successfully");
+                }
+            }
+        );
+        location.href = "Cart.php";
     }
 </script>
     <?php
@@ -20,18 +32,11 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             $count++;
-            echo"<div class='FlightCardTopBar'> <button id=". $count." onclick='Remove(this.id)' class='right'>Remove</button></div>";
+            echo"<div class='FlightCardTopBar'> <button id=".$row['rev_num']." onclick='Remove(this.id)' class='right'>Remove</button></div>";
             echo"<div class='FlightCard'>";
             echo"<div style='text-align: center;'>";
-            if($row['rev_num']==NULL)
-                echo"Reservation Status:Pending";
-            else if($row['rev_num']=="Fail")
-                echo"Reservation Status:Failed";
-            else
-            {
-                echo"Reservation Code:";
-                echo($row['rev_num']);
-            }    
+            echo"Reservation Code:";
+            echo($row['rev_num']);   
             echo"</div>";
             echo "<span style='text-align: left;'> Flight Code:".$row['f_code']."</span>";
             if($row['f_code2']!=NULL)

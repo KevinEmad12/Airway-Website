@@ -94,6 +94,12 @@ input.right {
     background-color: #5c0931;
     font-size: 15px; 
 }
+button.right {
+    float: right;
+    border-radius: 25px  25px 25px 25px;
+    background-color: #5c0931;
+    font-size: 15px; 
+}
 input.right:hover{
     background-color: #7f1b4e;
 }
