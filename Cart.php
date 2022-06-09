@@ -1,5 +1,11 @@
 <html>
 <link rel="stylesheet" href="styles.css">
+<script>
+    function Remove(ID)
+    {
+        
+    }
+</script>
     <?php
     session_start();
     $conn = new mysqli("localhost", "root", "", "egway");
@@ -14,7 +20,7 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             $count++;
-            echo"<div class='FlightCardTopBar'> <input id=". $row['rev_num']." type='button' onclick='Remove(this.id)' value='Remove' class='right'></div>";
+            echo"<div class='FlightCardTopBar'> <button id=". $count." onclick='Remove(this.id)' class='right'>Remove</button></div>";
             echo"<div class='FlightCard'>";
             echo"<div style='text-align: center;'>";
             if($row['rev_num']==NULL)
