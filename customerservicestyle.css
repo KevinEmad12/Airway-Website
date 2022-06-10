@@ -1,0 +1,116 @@
+.date
+{
+    background-color:white;
+    font-size: 20px;
+    padding: auto;
+}
+
+.FlightCardTopBar
+{
+    width: 50%;
+    height: 10px;
+    background-color:#5c0931;
+    padding: 15px;
+    border-radius: 25px 25px 0px 0px;
+    outline: 1px solid black;
+    font-size: 25px;
+    position:relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.FlightCard
+{
+    width: 50%;
+    height: 50%;
+    background-color:white;
+    padding: 15px;
+    border-radius: 0px 0px 25px 25px;
+    outline: 1px solid black;
+    font-size: 25px;
+    position:relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+button.right 
+{
+    float: right;
+    border-radius: 50px  50px 50px 50px;
+    background-color: whitesmoke;
+    font-size: 15px; 
+}
+
+.title
+{
+    color: 7f1b4e;
+    text-align: center;
+    font-size: 30px;
+}
+.button
+{
+    float: right;
+    border-radius: 50px  50px 50px 50px;
+    padding: 10px 24px;
+    background-color: 7f1b4e;
+    font-size: larger;
+    font-size: 15px;
+}
+
+:hover.button
+{
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.table, td, th {
+    border: 1px solid black;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    height: 70px;
+  }
+
+ .searchtext
+ {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    margin-top: 1%;
+    float: left;
+ }
+
+ .search{
+    color: 7f1b4e;
+    text-align: left;
+    font-size: 30px;
+ }
+ 
+.searchbutton{
+    background-color: 7f1b4e;
+    border-radius: 50px  50px 50px 50px;
+    width: 200px;
+    font-size: 20px;
+    padding: 10px 24px;
+    margin-left: 2%;
+}
+
+:hover.searchbutton
+{
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.error{
+    font-size: x-large;
+    padding-bottom:5px; 
+    color:red;
+}
