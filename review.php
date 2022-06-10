@@ -13,7 +13,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 $rate=$_POST['i'];
 if($rate==0){
     $query= "SELECT * FROM reservations WHERE comment IS NOT NULL";
-}else{$query= "SELECT * FROM reservations WHERE comment IS NOT NULL AND `rate` = '$rate' ";}
+}else{
+    $query= "SELECT * FROM reservations WHERE comment IS NOT NULL AND `rate` = '$rate' ";
+}
 
 $result= mysqli_query($conn,$query);
 $req_count=mysqli_num_rows($result);
