@@ -1,9 +1,3 @@
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
-
 <?php
     include "csmenu.php";
     $servername = "localhost";
@@ -17,15 +11,14 @@ table, th, td {
     if(! $conn ) {
         die('Could not connect: ' . mysql_error());
      }
-    $query = "SELECT * FROM trips";
-    $result = mysqli_query($conn,$query);
+        $query = "SELECT * FROM trips";
+        $result = mysqli_query($conn,$query);
 
     if(isset($_POST['save']))
-    {
-        
+    { 
         $sql="SELECT * from trips WHERE FlightCode='".$_POST['flightcode']."'";
-        $result = mysqli_query($conn,$sql);
-    
+        $result = mysqli_query($conn,$sql); 
+        
         echo"<table >
     
         <tr>
@@ -39,31 +32,38 @@ table, th, td {
           
              
         </tr>";
-    while($row = mysqli_fetch_array($result)) 
-    {
-        ?>
-        <tr>
-    
-        <td><?= $row['FlightCode']; ?></td>
-        <td><?= $row['FromAirPort']; ?></td>
-        <td><?=  $row['Destination']; ?></td>
-        <td><?= $row['f_date']; ?></td>
-        <td><?= $row['price']; ?></td>
+        while($row = mysqli_fetch_array($result)) 
+         {
+?>
+            <tr>
+        
+            <td><?= $row['FlightCode']; ?></td>
+            <td><?= $row['FromAirPort']; ?></td>
+            <td><?=  $row['Destination']; ?></td>
+            <td><?= $row['f_date']; ?></td>
+            <td><?= $row['price']; ?></td>
 
-        </tr>
-        <?php
-    }
+            </tr>
+<?php
+        }
     
     }
+    
 ?>
 
 <html>
 <head>
-    
+    <title>Search For A Flight</title>
+    <link rel="stylesheet" href="customerservicestyle.css">
 </head>
-<form method="post" action="">
-Flight Code: <input type="text" name="flightcode">
- 
-<p><button type="submit" name="save">Search</button></p>
-
+<body>
+    <div class ="title"> Search For A Flight </div>    
+    <form method="post" action="">
+        <div class="search" > Flight Code: </div> 
+          <div> <input class="searchtext" type="text" placeholder="example: CA0001PA" name="flightcode" required> </div>
+        <p><button class="searchbutton" type="submit" name="save">Search</button></p>
+    </form>
+</body>
 </html>
+
+        
