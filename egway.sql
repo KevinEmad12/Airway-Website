@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 08:30 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Jun 11, 2022 at 01:32 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,33 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contactus`
---
-
-CREATE TABLE `contactus` (
-  `Fname` varchar(20) NOT NULL,
-  `Lname` varchar(20) NOT NULL,
-  `Country` varchar(30) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Subject` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `contactus`
---
-
-INSERT INTO `contactus` (`Fname`, `Lname`, `Country`, `Email`, `Subject`) VALUES
-('Kevin', 'Emad', 'Egypt', 'kevinemad3@gmail.com', 'Hello'),
-('Kevin', 'Emad', 'Egypt', 'kevinemad3@gmail.com', 'Hello'),
-('Samuel', 'Nabil', 'Egypt', 'Samuel@nabil.com', 'Hello'),
-('Kevin', 'Emad', 'Egypt', 'Samuel@nabil.com', 'sadsad'),
-('Kevin', 'Emad', 'Egypt', 'Samuel@nabil.com', 'sads'),
-('Samuel', 'Nabil', 'london', 'Samuel', 'Hello2'),
-('Kevin', 'Nabil', 'Egypt', 'kevin', 'adsa');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `family`
 --
 
@@ -64,12 +37,25 @@ CREATE TABLE `family` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `log`
+--
+
+CREATE TABLE `log` (
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `who` varchar(50) NOT NULL,
+  `action` varchar(50) NOT NULL,
+  `description` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reservations`
 --
 
 CREATE TABLE `reservations` (
   `name` varchar(200) NOT NULL,
-  `rev_num` varchar(25) NOT NULL,
+  `rev_num` int(25) NOT NULL,
   `f_code` varchar(15) NOT NULL,
   `f_code2` varchar(15) NOT NULL,
   `f_code3` varchar(15) NOT NULL,
@@ -77,35 +63,8 @@ CREATE TABLE `reservations` (
   `comment` varchar(250) DEFAULT NULL,
   `cancel` tinyint(1) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp(),
-  `f_date` datetime DEFAULT NULL
+  `Price` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `reservations`
---
-
-INSERT INTO `reservations` (`name`, `rev_num`, `f_code`, `f_code2`, `f_code3`, `rate`, `comment`, `cancel`, `date`, `f_date`) VALUES
-('', '', 'CA0001LOD', '', '', NULL, NULL, NULL, '2022-05-22 05:07:26', NULL),
-('Guest', '', 'CA0002LO', '', '', NULL, NULL, NULL, '2022-06-06 08:51:43', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subscriptions`
---
-
-CREATE TABLE `subscriptions` (
-  `email` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `subscriptions`
---
-
-INSERT INTO `subscriptions` (`email`) VALUES
-('kevin2000839@miuegyp'),
-('kevinemad3@gmail.com'),
-('Samuel@nabil.com');
 
 -- --------------------------------------------------------
 
@@ -126,9 +85,14 @@ CREATE TABLE `trips` (
 --
 
 INSERT INTO `trips` (`FlightCode`, `FromAirPort`, `Destination`, `f_date`, `price`) VALUES
-('CA0001LOD', 'Cairo', 'London', '2022-06-06', ''),
-('CA0001PAD', 'Cairo', 'Paris', '2022-06-06', ''),
-('CA0002LO', 'Cairo', 'London', '2022-06-06', '7000');
+('CA0001LO', 'Cairo', 'London', '2022-06-06', '8800'),
+('CA0001PA', 'Cairo', 'Paris', '2022-06-06', '8700'),
+('CA0002LO', 'Cairo', 'London', '2022-06-06', '7000'),
+('CA0003LO', 'Cairo', 'London', '2022-06-09', '6500'),
+('LO0001CA', 'London', 'Cairo', '2022-06-08', '5500'),
+('LO0001PA', 'London', 'Paris', '2022-06-15', '3500'),
+('LO0004CA', 'London', 'Cairo', '2022-06-30', '5500'),
+('PA0001CA', 'Paris', 'Cairo', '2022-06-23', '4400');
 
 -- --------------------------------------------------------
 
@@ -175,10 +139,10 @@ ALTER TABLE `family`
   ADD PRIMARY KEY (`guardian_natid`);
 
 --
--- Indexes for table `subscriptions`
+-- Indexes for table `reservations`
 --
-ALTER TABLE `subscriptions`
-  ADD PRIMARY KEY (`email`);
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`rev_num`);
 
 --
 -- Indexes for table `trips`
@@ -192,6 +156,16 @@ ALTER TABLE `trips`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`Email`),
   ADD UNIQUE KEY `NatID` (`natid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `rev_num` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
