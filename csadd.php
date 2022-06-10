@@ -1,3 +1,5 @@
+<?php include "csmenu.php";?>
+
 <?php
 $servername = "localhost";
 $username = "root";
@@ -24,28 +26,33 @@ if(isset($_POST['enter']))
     $message = "Record Added Successfull";
 }
 
-
 ?>
-<?php include "csmenu.php";?>
+<html>
+<head>
+    <title>Add Reservation</title>
+    <link rel="stylesheet" href="customerservicestyle.css">
+</head>
 
-<h2> Add Reservation </h2>
-<form action="" method="post">
-<div>
-    <?php if(isset($message)) { echo $message; } ?>
+<body>
+<div class ="title"> Add Reservation </div>
+<div class = "FlightCardTopBar"> </div> 
+<div class ="FlightCard">
+    <form action="" method="post" class="">
+<div><?php if(isset($message)) { echo $message; } ?></div>
+    Name:<br>
+    <input type="text" name="name" required><br> 
+    Reservation Number:<br>
+    <input type="text" name="revnum" required> <br> 
+    Flight Code:<br>
+    <input type="text" name="flightcode" required><br>
+    Flight Code 2:<br>
+    <input type="text" name="flightcode2"><br>
+    Flight Code 3:<br>
+    <input type="text" name="flightcode3"><br>
+    Date:<br>
+    <input type="date" name="date" class="date" required><br>
+    <input type="submit" value="Enter" name="enter" class="button">
 </div>
-  Name:<br>
-  <input type="text" name="name"><br> 
-  Reservation Number:<br>
-  <input type="text" name="revnum"> <br> 
-  Flight Code:<br>
-  <input type="text" name="flightcode"><br>
-  Flight Code 2:<br>
-  <input type="text" name="flightcode2"><br>
-  Flight Code 3:<br>
-  <input type="text" name="flightcode3"><br>
-  Date:<br>
-  <input type="date" name="date"><br>
-  
-  <input type="submit" value="Enter" name="enter">
- 
 </form>
+</body>
+</html>
