@@ -1,9 +1,3 @@
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-
-</style>
 <?php
  include "csmenu.php";
  $servername = "localhost";
@@ -24,37 +18,43 @@ table, th, td {
 <!DOCTYPE html>
 <html>
 <head>  
+    <title>Edit Reservation</title>
+    <link rel="stylesheet" href="customerservicestyle.css">
 </head>
 <body>
+<div class ="title"> Edit Reservation </div> 
+<div class = "FlightCardTopBar"> </div> 
+<div class ="FlightCard">
 <table>
 <tr>
     <th>Name</th>
 	<th>Reservation Numbmer</th>
 	<th>Flight Code</th>
-    <th>Flight Code2</th>
-    <th>Flight Code3</th>
+    	<th>Flight Code2</th>
+    	<th>Flight Code3</th>
 	<th>Date</th>
-    <th>Edit</th>
+    	<th>Edit</th>
 </tr>
 <?php
-$i=0;
-while($row = mysqli_fetch_array($result)) 
-{
+    $i=0;
+    while($row = mysqli_fetch_array($result)) 
+    {
  
 ?>
-<tr class="<?php if(isset($classname)) echo $classname;?>">
-<td><?= $row['name']; ?></td>
-	<td><?= $row['rev_num']; ?></td>
-	<td><?=  $row['f_code']; ?></td>
-	<td><?= $row['f_code2']; ?></td>
-    <td><?= $row['f_code3']; ?></td>
-    <td><?= $row['date']; ?></td>
-<td><a href="csupdateaction.php?id=<?php echo $row["id"]; ?>">Edit</a></td>
-</tr>
+        <tr>
+            <td><?= $row['name']; ?></td>
+            <td><?= $row['rev_num']; ?></td>
+            <td><?=  $row['f_code']; ?></td>
+            <td><?= $row['f_code2']; ?></td>
+            <td><?= $row['f_code3']; ?></td>
+            <td><?= $row['date']; ?></td>
+        <td><a href="csupdateaction.php?rev_num=<?php echo $row["rev_num"];?>"> Edit </a></td>
+        </tr>
 <?php
-    $i++;
-}
+        $i++;
+    }
 ?>
 </table>
+</div>
 </body>
 </html>
