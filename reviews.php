@@ -64,7 +64,7 @@ if($req_count>0){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>reviews</title>
 
-    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+  <!--  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
   <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
   <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
 
@@ -74,7 +74,7 @@ if($req_count>0){
   <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
   <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
 </div> 
-
+-->
 
  <!--   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group">
