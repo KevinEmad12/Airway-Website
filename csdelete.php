@@ -1,10 +1,3 @@
-<style>
-table, th, td 
-{
-  border: 1px solid black;
-}
-
-</style>
 <?php
 include "csmenu.php";
 
@@ -27,27 +20,37 @@ if(isset($_POST['save']))
 	for($i=0; $i < count($checkbox); $i++)
     {
         $del_id = $checkbox[$i]; 
-        $sql="DELETE FROM reservations WHERE id='".$del_id."'";
+        $sql="DELETE FROM reservations WHERE rev_num ='".$del_id."'";
         mysqli_query($conn,$sql);
         $message = "Data deleted successfully !";
-        echo ($message);
 }
 }
 ?>
 
 <html>
-    <h2> Delete Reservation</h2>
+    <head>
+        <title>Delete Reservation</title>
+        <link rel="stylesheet" href="customerservicestyle.css">
+    </head>
+<body>
+<div class ="title"> Delete Reservation </div> 
+<div class = "FlightCardTopBar"> </div> 
+<div class ="FlightCard">
 <form method="post" action="">
-<table class="table table-bordered">
+<div>
+    <?php if(isset($message)) { echo $message; } ?>
+</div>
+<div style="padding-bottom:5px;"></div>
+<table class="table">
 <thead>
 <tr>
 	<th> Name</th>
 	<th>Reservation Numbmer</th>
 	<th>Flight Code</th>
-    <th>Flight Code2</th>
-    <th>Flight Code3</th>
+    	<th>Flight Code2</th>
+    	<th>Flight Code3</th>
 	<th>Date</th>
-    <th>Delete </th>
+    	<th>Delete </th>
 	 
 </tr>
 </thead>
@@ -61,18 +64,17 @@ while($row = mysqli_fetch_array($result))
 	<td><?= $row['rev_num']; ?></td>
 	<td><?=  $row['f_code']; ?></td>
 	<td><?= $row['f_code2']; ?></td>
-    <td><?= $row['f_code3']; ?></td>
-    <td><?= $row['date']; ?></td>
-    <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $row["id"]; ?>"></td>
+    	<td><?= $row['f_code3']; ?></td>
+    	<td><?= $row['date']; ?></td>
+    	<td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $row["rev_num"]; ?>"></td>
 </tr>
 <?php
  
 }
 ?>
 </table>
-<p><button type="submit" class="btn btn-success" name="save">DELETE</button></p>
+<p><button type="submit" class="button" name="save" onclick="return confirm('Are you sure you want to delete this item?');" >DELETE</button></p>
 </form>
-
+</div>
 </body>
-</html>
 </html>
