@@ -58,14 +58,21 @@
         }
         );
     }
+   function convert(str) {
+  var date = new Date(str),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [date.getFullYear(), mnth, day].join("-");
+}
     function AddToCart(Flight) {
         let str="";
-        // if(document.getElementById('Date').innerHTML!="")
-        // {
-        //     let str =document.getElementById('Date').innerHTML;
-        //     let dat = new Date(str);
-        //     dat.setDate(dat.getDate() + 7);
-        // }
+        if(document.getElementById('Date').innerHTML!="")
+        {
+            let str =document.getElementById('Date').innerHTML;
+            let dat = new Date();
+            dat.setDate(dat.getDate()+7);
+            alert(convert(dat));
+        }
         let FC1;
         let FC2;
         let FC3;
