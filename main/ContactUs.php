@@ -43,6 +43,7 @@
 
       <?php require_once('/apps/xampp/htdocs/project/layout/footer.html'); ?>
 
+
 <script>
       function Country() {
             jQuery.ajax(
