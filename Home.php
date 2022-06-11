@@ -1,8 +1,11 @@
 <?php
-// Start the session
 session_start();
+if(isset($_SESSION['email']))
+{
+    echo $_SESSION['email'];
+}
 ?>
-
+<?php require_once('/apps/xampp/htdocs/project/layout/header.html'); ?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -15,7 +18,7 @@ session_start();
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        <link rel="stylesheet" href="Styles2.css">
+        <link rel="stylesheet" href="mainstyle.css">
         
 </head>
 
@@ -24,19 +27,7 @@ session_start();
 
 <title>Home Page</title>
 
-    <a href="Home.php"><div class="topnav"> 
-        <div >
-      <img  class="logo-image" src="img/logo.jfif">
-</div></a>
-      <a  href="Home.php"><i class="fa fa-fw fa-home"></i>Home</a>
-      <a  href="Help.html"><i class="fa fa-fw fa-envelope"></i>Contact</a>
-      <a  href="Book.html"><i class="fa fa-plane" aria-hidden="true"></i> Book</a>
-      <a href="FlightSearchAid.php"><i class="fa fa-calendar" aria-hidden="true"></i> My Trip</a>
-      <div class="topnav-right">
-          <a href="registerHTML.html"><i class="fa fa-fw fa-user"></i>Sign up | Login</a>
-      </div>
-    </div>
-  
+    
     <div class="bodyx">
         <div class="bar">
             <button id="button1" class="MainBarActive" onclick="SwitchMainTabs('button1')" style="border-radius: 25px  0px 0px 0px;">Book</button>
@@ -174,40 +165,8 @@ session_start();
 </section>
 </body>
 
-<footer>
-    <div>
-      <img class="footer-content" alt="smile" src="img/skytrax-airline-covid19-logo.svg" WIDTH=90 HEIGHT=100> 
-      <img class="footer-content" alt="smile" src="img/AirlineOftheYear2021.svg" WIDTH=100 HEIGHT=90> 
-      <img class="footer-content" alt="smile" src="img/Theqa_logo_SVG.svg" width="125" height="50">
-      <div class="footer-content">
-          <h1 style="color:white">Welcome to our website</h1>
-          <br>
-          <br>
-          <p style="color:white">Let's stay connected</p> 
-          
-          <ul class="socials">
-              <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-              <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a></li>
-          </ul>
+<?php require_once('/apps/xampp/htdocs/project/layout/footer.html'); ?>
 
-        </div>
-                                     
-      <iframe style="text-align:right;margin: right 1000px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.450024542732!2d31.3966993145951!3d30.109933622431942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581771026121f9%3A0xa38d42c793391a6a!2sAirport!5e0!3m2!1sen!2seg!4v1652309091653!5m2!1sen!2seg" width="250" height="100"></iframe>
-
-      <div class="footer-bottom">
-          <p style="color:white">EGWay. All rights reserved</p>
-                  <div class="footer-menu">
-                    <ul class="f-menu">
-                      <li><a href="AboutUs.html">About us</a></li>
-                      <li><a href="Help.html">Contact</a></li>
-                      
-                    </ul>
-                  </div>
-      </div>
-      </div>   
-  </footer>
 
 
 <script>
