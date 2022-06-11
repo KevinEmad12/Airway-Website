@@ -15,8 +15,7 @@ session_start();
 </div></a>
   <a  href="/project/main/Home.php"><i class="fa fa-fw fa-home"></i>Home</a>
   <a  href="/project/main/ContactUs.php"><i class="fa fa-fw fa-envelope"></i>Contact</a>
-  <a  href="/project/main/AboutUs.php"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
-  <a href="FlightSearchAid.php"><i class="fa fa-calendar" aria-hidden="true"></i> My Trip</a>
+  <a  href="/project/main/AboutUs.php"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</a>
   <div class="topnav-right">
 
 <?php
