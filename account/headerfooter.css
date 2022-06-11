@@ -1,0 +1,152 @@
+.bodyx {
+    position: relative;
+    padding-bottom: 100px;
+    min-height:100vh;
+    margin-top:100px;
+    
+    }
+                .topnav{
+
+                    background-color: #5c0931;
+                    width: 100%;
+                    display: fixed;
+                    top: 0%;
+                    left: 0%;
+                    overflow:hidden;
+                    
+                    }
+                    .topnav a{
+                        float: left;
+                        display: block;
+                        color: #f2f2f2;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration:none;
+                        font-size:17px; 
+                        cursor: pointer;          
+                     }
+                     .logo-image{
+                         left: 0;
+                        width: 35px;
+                        height: 30px;
+                        border-radius: 50%;
+                        
+                       
+                    }
+                     .topnav-right a{
+                        float: right;
+                        display: block;
+                        color: #f2f2f2;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration:none;
+                        font-size:17px;           
+                     }
+                     .topnav a:hover{
+                         background-color:whitesmoke ;
+                         color: black;
+                     }
+                     .topnav a:active{
+                         background-color: #500944;
+                         color: white;
+                     }
+                     *{
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                     }
+                     footer{
+                        margin-top:200px;
+                        background: #5c0931;
+                       
+                    }
+    
+                    .footer-content{
+                        display: inline-block;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                  
+                    .footer-content p{
+                        max-width: auto;
+                        margin: 10px auto;
+                        line-height: 28px;
+                        font-size: 14px;
+                        color: #cacdd2;
+                    }
+                    .footer-content img {
+                        display:block;                
+                        flex-direction: row;
+                    }
+        
+                    .footer-bottom{
+                        background: #474e5d;
+                        width: auto;
+                        padding: 20px;
+                    padding-bottom: 30px;
+                        
+                    }
+                    .footer-bottom p{
+                        float: left;
+                        font-size: 14px;
+                        word-spacing: 2px;                    
+                    }
+                    .footer-bottom p a{
+                    color:rgb(87, 7, 80);
+                    font-size: 16px;
+                    text-decoration: none;
+                    }
+                    .footer-menu{
+                    float: right;
+        
+                    }
+                    .footer-menu ul{
+                    display: flex;
+                    }
+                    .footer-menu ul li{
+                    padding-right: 10px;
+                    display: block;
+                    }
+                    .footer-menu ul li a{
+                    color: #cfd2d6;
+                    text-decoration: none;
+                    cursor: pointer;
+                    }
+                    .footer-menu ul li a:hover{
+                    color: rgb(87, 7, 80);;
+                    }
+        
+                    .socials{
+                        
+                        list-style: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin:10px 250px 30px 250px;
+                    }
+                    .socials li{
+                        margin: 0 10px;
+                    }
+                    .socials a{
+                        text-decoration: none;
+                        color: #fff;
+                        border: 1px solid white;
+                        padding: 5px;
+                        cursor: pointer;
+                        border-radius: 50%;
+        
+                    }
+                    .socials a i{
+                        font-size:medium;
+                        width: 20px;
+        
+                    }
+                    .socials a:hover i{
+                        color: black;
+                    }
+    
+                    body.GreyBackGround{
+        background-color:#dbdbdb;
+    }
