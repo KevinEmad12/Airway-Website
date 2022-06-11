@@ -1,0 +1,60 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" href="instyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+<body>
+  
+        <div class="form">
+            <form id="myForm">
+                <h1>Reset Password</h1>
+                <div class = "form-message">  </div>
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="New Password" required/>
+                <input type="password" name="cpassword" placeholder="Confirm Password" required/>
+                <input type="submit" name="reset_btn"  value="Reset Password" />
+            </form>
+        </div>
+
+</body>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#myForm").on('submit',function(e){
+        e.preventDefault();
+       
+        $.ajax({
+            type: "POST",
+            url: "resetpass.php",
+            data:new FormData(this),
+            dataType: "json",
+            contentType: false,
+            cache: false,
+            processData: false,
+            
+            success:function(response){
+                $(".form-message").css("display","block");
+                
+                if(response.status == 1)
+                {
+                    $("#myForm")[0].reset();
+                    $(".form-message").html('<p>' + response.message + '</p>');
+                    setTimeout(function(){
+                        window.location = 'inpage.php' 
+                                     }, 2000);
+                }
+                else
+                {
+                    
+                    $(".form-message").html('<p>' + response.message + '</p>');
+                }
+            }
+        });
+    });
+});
+</script>
+
+</html>
+
