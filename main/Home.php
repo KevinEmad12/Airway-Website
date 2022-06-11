@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['email']))
+if(isset($_SESSION['User']))
 {
-    echo $_SESSION['email'];
+    echo $_SESSION['User'];
 }
 ?>
 <?php require_once('/apps/xampp/htdocs/project/layout/header.html'); ?>
