@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 
 </html>
 <head> <link rel="stylesheet" href="/apps/xampp/htdocs/project/main/mainstyle.css"></head>
@@ -11,7 +16,20 @@
   <a  href="Book.html"><i class="fa fa-plane" aria-hidden="true"></i> Book</a>
   <a href="FlightSearchAid.php"><i class="fa fa-calendar" aria-hidden="true"></i> My Trip</a>
   <div class="topnav-right">
-      <a href="/project/account/inpage.php"><i class="fa fa-fw fa-user"></i>Sign up | Login</a>
+
+<?php
+if(!isset($_SESSION['User']) )
+{
+  
+     echo "<a href='/project/account/inpage.php'><i class='fa fa-fw fa-user'></i>Sign up | Login</a>";
+}
+else{
+    echo "<a href='/project/account/inpage.php'><i class='fa fa-fw fa-user'></i>";
+    echo $_SESSION['User'];
+    echo "</a>";
+}
+?>
+
   </div>
 </div>
 </html>
