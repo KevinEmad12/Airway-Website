@@ -18,7 +18,7 @@ if( isset($_POST['email']) || isset($_POST['password']) || isset($_POST['cpasswo
 
 if(!empty($email) && !empty($password) && !empty($cpassword) ){
    $hashpass = md5($password);
-   $select = "SELECT * FROM username WHERE email= '$email' ";
+   $select = "SELECT * FROM users WHERE Email= '$email' ";
    $result = mysqli_query($conn,$select);
    $check = mysqli_num_rows($result);
 
@@ -36,7 +36,7 @@ if(!empty($email) && !empty($password) && !empty($cpassword) ){
       }
       else{
         $response['status'] = 1;
-        $query = "UPDATE username SET password = '$hashpass' WHERE email = '$email' ";
+        $query = "UPDATE users SET Password = '$hashpass' WHERE Email = '$email' ";
         $res = mysqli_query($conn,$query);
         $response['message'] = "password updated";
         
