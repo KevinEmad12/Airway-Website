@@ -207,8 +207,8 @@
         echo "<span style='float:right;'> TripDate: " . $row["f_date"]."</span>";
         echo "<br>";
         echo "<br>";
-        echo "<span style='text-align: left;'> Destination: " . $row["Destination"]."</span>";
-        echo "<span style='float:right;'> FromAirPort: " . $row["FromAirPort"]."</span>";
+            echo "<span style='text-align: left;'> FromAirPort: " . $row["FromAirPort"]."</span>";
+        echo "<span style='float:right;'> Destination: " . $row["Destination"]."</span>";
         echo "<br>";
         echo "<div style='text-align: center;'> Price: " . $row["price"]."</div>";
         echo "</div>";
