@@ -65,81 +65,99 @@
   return [date.getFullYear(), mnth, day].join("-");
 }
     function AddToCart(Flight) {
-        let str="";
-        if(document.getElementById('Date').innerHTML!="")
+        jQuery.ajax(
         {
-            let str =document.getElementById('Date').innerHTML;
-            let dat = new Date();
-            dat.setDate(dat.getDate()+7);
-            alert(convert(dat));
-        }
-        let FC1;
-        let FC2;
-        let FC3;
-        if(document.getElementById('f_code2')!=null)
-        {
-            FC1=document.getElementById('f_code').innerHTML;
-            FC2=document.getElementById('f_code2').innerHTML;
-            FC3=Flight;
-        }
-        else if(document.getElementById('f_code')!=null)
-        {
-            FC1=document.getElementById('f_code').innerHTML;
-            FC2=Flight;
-            FC3="";
-        }
-        else
-        {
-            FC1=Flight;
-            FC2="";
-            FC3="";
-        }
-        if(document.getElementById('TripType').innerHTML=='Direct')//Completed direct flight
-        {
-            jQuery.ajax(
+            url:"Date.php",
+            data:"FCode="+Flight,
+            type:"GET",
+            success:function(data)
             {
-                url:"AddToCart.php",
-                data:"FCode="+FC1+"&NumOfPassengers="+document.getElementById('NumberOfPassengers').innerHTML+"&FCode2="+FC2+"&FCode3="+FC3,
-                type:"GET",
-                success:function(data)
-                {
-                    alert("Successfully Booked");                        
-                }
+            let FC1;
+            let FC2;
+            let FC3;
+            if(document.getElementById('f_code2')!=null)
+            {
+                FC1=document.getElementById('f_code').innerHTML;
+                FC2=document.getElementById('f_code2').innerHTML;
+                FC3=Flight;
             }
-        );
-            location.href = "Cart.php";
-        }
-        if(document.getElementById('TripType').innerHTML=='ReturnEarly')
-        {
-            let From=document.getElementById('To').innerHTML;
-            let To=document.getElementById('From').innerHTML;
-            let NumP=document.getElementById('NumberOfPassengers').innerHTML;
-            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+str+"&T=b";
-        }
-        if(document.getElementById('TripType').innerHTML=='ReturnLate')
-        {
-            let From=document.getElementById('To').innerHTML;
-            let To=document.getElementById('From').innerHTML;
-            let NumP=document.getElementById('NumberOfPassengers').innerHTML;
-            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+str+"&T=a";
-        }
-        if(document.getElementById('TripType').innerHTML=='Transit')
-        {
-            let From=document.getElementById('From').innerHTML;
-            let To=document.getElementById('To').innerHTML;
-            let NumP=document.getElementById('NumberOfPassengers').innerHTML;
-            location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+FC1+"&state=mid&date=";
-        }
-        if(document.getElementById('TripType').innerHTML=='Multiple')
-        {
-            let From=document.getElementById('To').innerHTML;
-            let To=document.getElementById('From').innerHTML;
-            let NumP=document.getElementById('NumberOfPassengers').innerHTML;
-            if(document.getElementById('f_code')==null)
-                location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Multiple&NumberOfPassengers="+NumP+"&FCode="+FC1+"&date=";
+            else if(document.getElementById('f_code')!=null)
+            {
+                FC1=document.getElementById('f_code').innerHTML;
+                FC2=Flight;
+                FC3="";
+            }
             else
-                location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+FC1+"&FCode2="+FC2+"&date=";
+            {
+                FC1=Flight;
+                FC2="";
+                FC3="";
+            }
+            if(document.getElementById('TripType').innerHTML=='Direct')//Completed direct flight
+            {
+                jQuery.ajax(
+                {
+                    url:"AddToCart.php",
+                    data:"FCode="+FC1+"&NumOfPassengers="+document.getElementById('NumberOfPassengers').innerHTML+"&FCode2="+FC2+"&FCode3="+FC3,
+                    type:"GET",
+                    success:function(data)
+                    {
+                        alert("Successfully Booked");                        
+                    }
+                }
+                );
+                location.href = "Cart.php";
+            }
+            if(document.getElementById('TripType').innerHTML=='ReturnEarly')
+            {
+                let dat = new Date(data);
+                dat.setDate(dat.getDate()+7);
+                let newdate=convert(dat);
+                alert(newdate);
+                let From=document.getElementById('To').innerHTML;
+                let To=document.getElementById('From').innerHTML;
+                let NumP=document.getElementById('NumberOfPassengers').innerHTML;
+                location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+newdate+"&T=b";
+            }
+            if(document.getElementById('TripType').innerHTML=='ReturnLate')
+            {
+                let dat = new Date(data);
+                dat.setDate(dat.getDate()+7);
+                let newdate=convert(dat);
+                alert(newdate);
+                let From=document.getElementById('To').innerHTML;
+                let To=document.getElementById('From').innerHTML;
+                let NumP=document.getElementById('NumberOfPassengers').innerHTML;
+                location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+Flight+"&date="+newdate+"&T=a";
+            }
+            if(document.getElementById('TripType').innerHTML=='Transit')
+            {
+                let dat = new Date(data);
+                dat.setDate(dat.getDate());
+                let newdate=convert(dat);
+                alert(newdate);
+                let From=document.getElementById('From').innerHTML;
+                let To=document.getElementById('To').innerHTML;
+                let NumP=document.getElementById('NumberOfPassengers').innerHTML;
+                location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+FC1+"&state=mid&date="+newdate;
+            }
+            if(document.getElementById('TripType').innerHTML=='Multiple')
+            {
+                let dat = new Date(data);
+                dat.setDate(dat.getDate());
+                let newdate=convert(dat);
+                alert(newdate);
+                let From=document.getElementById('To').innerHTML;
+                let To="Anywhere";
+                let NumP=document.getElementById('NumberOfPassengers').innerHTML;
+                if(document.getElementById('f_code')==null)
+                    location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Multiple&NumberOfPassengers="+NumP+"&FCode="+FC1+"&date="+newdate;
+                else
+                    location.href = "Trips.php?From="+From+"&To="+To+"&TripType=Direct&NumberOfPassengers="+NumP+"&FCode="+FC1+"&FCode2="+FC2+"&date="+newdate;
+            }
+            }
         }
+        );
     }
 </script>
 <?php
@@ -149,15 +167,6 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-    if(isset($_GET['T']))//for return late/Early
-    {
-        if($_GET['T']=='b')
-            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."'";
-        if($_GET['T']=='a')
-            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."'";
-    }
-
     if($_GET['date']!=NULL)//if date is set
         $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date='".$_GET['date']."'";
     else//if date is not set
@@ -170,8 +179,22 @@
 
     if(isset($_GET['state']))//transit flights2
     {
-        $sql="SELECT * FROM `trips` WHERE `Destination`='".$_GET['To']."' AND `FromAirPort` = (SELECT `Destination` FROM `trips` WHERE `FlightCode`='".$_GET['FCode']."')";
+        $sql="SELECT * FROM `trips` WHERE `Destination`='".$_GET['To']."' AND `FromAirPort` = (SELECT `Destination` FROM `trips` WHERE `FlightCode`='".$_GET['FCode']."') AND f_date>='".$_GET['date']."'";
     }
+
+    if(isset($_GET['T']))//for return late/Early
+    {
+        if($_GET['T']=='b')
+            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date<'".$_GET['date']."'";
+        if($_GET['T']=='a')
+            $sql = "SELECT FlightCode, FromAirPort, Destination, f_date, price FROM trips WHERE FromAirPort='".$_GET['From']."' AND Destination='".$_GET['To']."' AND f_date>'".$_GET['date']."'";
+    }
+
+    if($_GET['TripType']=='Multiple')//Multiple Flights
+    {
+    $sql="SELECT * FROM `trips` WHERE `FromAirPort`='".$_GET['From']."' AND f_date>'".$_GET['date']."'";
+    }
+
 
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -193,6 +216,10 @@
         }
     } else {
       echo "No Flights Found";
+    }
+    if($_GET['TripType']=='Multiple')
+    {
+        echo"<input type='button' onclick='AddToCart(0)' value='Book'></div>";
     }
     $conn->close();
 ?>
