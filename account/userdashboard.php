@@ -23,20 +23,20 @@
                
             <p> Personal Info</p>
             <div class = "form-message">  </div>
-            <label >Name</label> <input type="text" name="editname" placeholder="Name">
-            <label >Phone Number</label> <input type="text" name="editphonenumber" placeholder="Phone number">
+            <label >Name</label> <input type="text" name="editname" placeholder="Name" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'>
+            <label >Phone Number</label> <input type="number" name="editphonenumber" placeholder="Phone number">
                   
         
 
             <p> Address</p>
             <label >Address Line</label> <input type="text" name="editaddress" placeholder="Address line">
-            <label >Postcode</label> <input type="text" name="editpostcode" placeholder="Postal code">
-            <label >Country</label> <input type="text" name="editcountry" placeholder="Country">
+            <label >Postcode</label> <input type="number" name="editpostcode" placeholder="Postal code">
+            <label >Country</label> <input type="text" name="editcountry" placeholder="Country" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' >
           
     
 
             <p>Info</p>
-            <label >Nationality</label> <input type="text" name="editnationality" placeholder="Nationality">
+            <label >Nationality</label> <input type="text" name="editnationality" placeholder="Nationality" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' >
         
             <input type="submit" name="user_btn"  value="EDIT" />
         </form> 
