@@ -3,24 +3,19 @@
         <link rel="stylesheet" href="instyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
-
 <body style="background-image: url('background.JPG');">
-
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <div class="form">
                 <form id="myForm">
                 <h1>Create Account</h1>
-
                 <div class = "form-message">  </div>
-
-                <input type="text"  name="new_name" placeholder="Name" required />
+                <input type="text"  name="new_name" placeholder="Name" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' required />
                 <input type="email"  name="new_email" placeholder="Email" required />
                 <input type="password"  name="new_password" placeholder="Password" required/>
                 <input type="password" name="confirmpass" placeholder="Confrim Password" required/>
-                <input type="text" name="new_id" placeholder="National ID number" required/>
+                <input type="number" name="new_id" placeholder="National ID number" required/>
                 <input type="file" name="new_pic" accept="image/png, image/jpeg" />
-
                     <label for="familysb">Family members:</label>
                     <select id="familysb">
                       <option value="0">0</option>
@@ -32,7 +27,6 @@
                     <button name="familyadd" onclick="familyfunction()" type="button">add</button>
                     <br><br>
                     <div id="divfamily">
-
                     </div>
                     <input type="submit" name="submit_btn"  value="Sign Up" />       
                 </form>
@@ -51,7 +45,6 @@
             </form>
        </div>
         </div>
-
         <!-- OVERLAY for swiping -->
         <div class="overlay-container">
             <div class="overlay">
@@ -68,7 +61,6 @@
             </div>
         </div>
     </div>
-
 <script type="text/javascript">
 $(document).ready(function(){
     $("#loginform").on('submit',function(k){
@@ -91,7 +83,6 @@ $(document).ready(function(){
                    
                     $("#loginform")[0].reset();
                     $(".form-message2").html('<p>' + response2.message + '</p>');
-
                 }
                 else
                 {
@@ -102,10 +93,6 @@ $(document).ready(function(){
         });
     });
 });
-
-
-
-
 $(document).ready(function(){
     $("#myForm").on('submit',function(e){
         e.preventDefault();
@@ -139,27 +126,13 @@ $(document).ready(function(){
         });
     });
 });
-
-
 </script>
-
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
 <script>
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
         const container = document.getElementById('container');
-
         function familyfunction() 
         {
             document.getElementById("divfamily").innerHTML = "";
@@ -173,15 +146,10 @@ $(document).ready(function(){
             }
             
         };
-
-
 function x(){
 	container.classList.add("right-panel-active");
 }
-
-
 function y(){
 	container.classList.remove("right-panel-active");
 }
-
 </script>
