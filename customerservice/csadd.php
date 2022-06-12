@@ -20,10 +20,15 @@ if(isset($_POST['enter']))
     $flightcode3 = $_POST["flightcode3"];
     $date = $_POST["date"];
     
-    $sql = " INSERT INTO `reservations`(`name`, `rev_num`, `f_code`, `f_code2`, `f_code3`, `date`) 
-    VALUES ('$name','$revnum','$flightcode','$flightcode2','$flightcode3','$date')";
-    $result=mysqli_query($conn,$sql);
-    $message = "Record Added Successfull";
+   if (is_numeric($revnum) && !is_numeric($name)) {
+        $sql = " INSERT INTO `reservations`(`name`, `rev_num`, `f_code`, `f_code2`, `f_code3`, `date`) 
+        VALUES ('$name','$revnum','$flightcode','$flightcode2','$flightcode3','$date')";
+        $result=mysqli_query($conn,$sql);
+        $message = "Record Added Successfull";
+    } 
+    if(!is_numeric($revnum) || is_numeric($name)) {
+        $message = "Reservation Number OR Name is not valid!";
+    }  
 }
 
 ?>
@@ -38,7 +43,7 @@ if(isset($_POST['enter']))
 <div class = "FlightCardTopBar"> </div> 
 <div class ="FlightCard">
     <form action="" method="post" class="">
-<div><?php if(isset($message)) { echo $message; } ?></div>
+<div class="error"><?php if(isset($message)) { echo $message; } ?></div>
     Name:<br>
     <input type="text" name="name" required><br> 
     Reservation Number:<br>
