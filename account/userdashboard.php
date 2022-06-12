@@ -4,6 +4,11 @@
         <link rel="stylesheet" href="profileCSS.css">
         <link rel="stylesheet" href="headerfooter.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        
     </head>
     <div style="margin-top:100px;">    
     <body style="background-image: url('background.JPG'); ">
@@ -40,23 +45,19 @@
 
         <div id="editfamily" class="FormHidden">
             <form id="familyform">
-
-                <div id="wrapper">
                 <div class = "form-message2">  </div>
-                    <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
+                    <table class="table" id="data_table">
                     <tr>
                     <th>Name</th>
-                    <th>Passport</th>
-                    <th>Nationality ID</th>
+                    <th>National ID </th>
                     <th>Age</th>
                     <th>Settings</th>
                     </tr>
                     
                     <tr id="row1">
-                    <td id="name_row1">Nametest</td>
-                    <td id="passport_row1">1233test</td>
-                    <td id="nationalityid_row1">egytest</td>
-                    <td id="age_row1">999</td>
+                    <td id="name_row1"></td>
+                    <td id="nationalid_row1"></td>
+                    <td id="age_row1"></td>
 
                     <td>
                     <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
@@ -68,8 +69,7 @@
                     
                     <tr>
                     <td><input type="text" id="new_name"></td>
-                    <td><input type="text" id="new_passport"></td>
-                    <td><input type="text" id="new_nationalityid"></td>
+                    <td><input type="text" id="new_nationalid"></td>
                     <td><input type="text" id="new_age"></td>
                     <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
                     </tr>
@@ -115,10 +115,12 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function(){
-    $("#familyform").on('submit',function(e){
+function familydatabase()
+{
+    $(document).ready(function(){
+    $("#familyform").on('click',function(e){
         e.preventDefault();
-       
+        alert("test");
         $.ajax({
             type: "POST",
             url: "editfamily.php",
@@ -129,12 +131,12 @@ $(document).ready(function(){
             processData: false,
             
             success:function(response){
-                $(".form-message").css("display","block");
+                $(".form-message2").css("display","block");
                 
                 if(response.status == 1)
                 {
                     $("#familyform")[0].reset();
-                    $(".form-message").html('<p>' + response.message + '</p>');
+                    $(".form-message2").html('<p>' + response.message + '</p>');
                     setTimeout(function(){
                     window.location.reload(1);
                                      }, 2000);
@@ -142,12 +144,15 @@ $(document).ready(function(){
                 else
                 {
                     
-                    $(".form-message").html('<p>' + response.message + '</p>');
+                    $(".form-message2").html('<p>' + response.message + '</p>');
                 }
             }
         });
     });
 });
+
+}
+
 </script>
 
 
@@ -172,58 +177,57 @@ function SwitchTabs(SelectedButton)
         
     }
 
-        function edit_row(no)
-        {
-         document.getElementById("edit_button"+no).style.display="none";
-         document.getElementById("save_button"+no).style.display="block";
-            
-         var name=document.getElementById("name_row"+no);
-         var passport=document.getElementById("passport_row"+no);
-         var age=document.getElementById("age_row"+no);
-            
-         var name_data=name.innerHTML;
-         var passport_data=passport.innerHTML;
-         var age_data=age.innerHTML;
-            
-         name.innerHTML="<input type='text' id='name_text"+no+"' value='"+name_data+"'>";
-         passport.innerHTML="<input type='text' id='passport_text"+no+"' value='"+passport_data+"'>";
-         age.innerHTML="<input type='text' id='age_text"+no+"' value='"+age_data+"'>";
-        }
-        
-        function save_row(no)
-        {
-         var name_val=document.getElementById("name_text"+no).value;
-         var passport_val=document.getElementById("passport_text"+no).value;
-         var age_val=document.getElementById("age_text"+no).value;
-        
-         document.getElementById("name_row"+no).innerHTML=name_val;
-         document.getElementById("passport_row"+no).innerHTML=passport_val;
-         document.getElementById("age_row"+no).innerHTML=age_val;
-        
-         document.getElementById("edit_button"+no).style.display="block";
-         document.getElementById("save_button"+no).style.display="none";
-        }
-        
-        function delete_row(no)
-        {
-         document.getElementById("row"+no+"").outerHTML="";
-        }
-        
-        function add_row()
-        {
-         var new_name=document.getElementById("new_name").value;
-         var new_passport=document.getElementById("new_passport").value;
-         var new_age=document.getElementById("new_nationalityid").value;
-         var new_age=document.getElementById("new_age").value;
-            
-         var table=document.getElementById("data_table");
-         var table_len=(table.rows.length)-1;
-         var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row"+table_len+"'>"+new_name+"</td><td id='passport_row"+table_len+"'>"+new_passport+"</td><td id='age_row"+table_len+"'>"+new_age+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
-        
-         document.getElementById("new_name").value="";
-         document.getElementById("new_passport").value="";
-         document.getElementById("new_age").value="";
-        }
+function edit_row(no)
+{
+ document.getElementById("edit_button"+no).style.display="none";
+ document.getElementById("save_button"+no).style.display="block";
+	
+ var name=document.getElementById("name_row1"+no);
+ var nationalid=document.getElementById("nationalid_row1"+no);
+ var age=document.getElementById("age_row1"+no);
+	
+ var name_data=name.innerHTML;
+ var nationalid_data=nationalid.innerHTML;
+ var age_data=age.innerHTML;
+	
+ name.innerHTML="<input type='text' id='name_text"+no+"' value='"+name_data+"'>";
+ nationalid.innerHTML="<input type='text' id='nationalid_text"+no+"' value='"+nationalid_data+"'>";
+ age.innerHTML="<input type='text' id='age_text"+no+"' value='"+age_data+"'>";
+}
+
+function save_row(no)
+{
+ var name_val=document.getElementById("name_text"+no).value;
+ var nationalid_val=document.getElementById("nationalid_text"+no).value;
+ var age_val=document.getElementById("age_text"+no).value;
+
+ document.getElementById("name_row1"+no).innerHTML=name_val;
+ document.getElementById("nationalid_row1"+no).innerHTML=nationalid_val;
+ document.getElementById("age_row1"+no).innerHTML=age_val;
+
+ document.getElementById("edit_button"+no).style.display="block";
+ document.getElementById("save_button"+no).style.display="none";
+}
+
+function delete_row(no)
+{
+ document.getElementById("row"+no+"").outerHTML="";
+}
+
+function add_row()
+{
+ var new_name=document.getElementById("new_name").value;
+ var new_nationalid=document.getElementById("new_nationalid").value;
+ var new_age=document.getElementById("new_age").value;
+	
+ var table=document.getElementById("data_table");
+ var table_len=(table.rows.length)-1;
+ var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='name_row1"+table_len+"'>"+new_name+"</td><td id='nationalid_row1"+table_len+"'>"+new_nationalid+"</td><td id='age_row1"+table_len+"'>"+new_age+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+
+ document.getElementById("new_name").value="";
+ document.getElementById("new_nationalid").value="";
+ document.getElementById("new_age").value="";
+}
 
  </script>
 
