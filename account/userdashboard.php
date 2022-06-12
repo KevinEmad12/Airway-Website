@@ -15,6 +15,7 @@
     <div class="bar">
         <button id="button1" class="MainBarActive" onclick="SwitchTabs('button1')">My Detials</button>
         <button id="button2" class="MainBar" onclick="SwitchTabs('button2')">Family Details</button>
+        <a href="/project/account/logout.php" class="logout-link">LOG OUT </a>
     </div>
     </div>
         
@@ -37,7 +38,8 @@
 
             <p>Info</p>
             <label >Nationality</label> <input type="text" name="editnationality" placeholder="Nationality" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' >
-        
+        <br>
+        <br>
             <input type="submit" name="user_btn"  value="EDIT" />
         </form> 
         </div> 
