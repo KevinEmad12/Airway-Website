@@ -30,11 +30,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></scri
 
 </div>
 -->
-</head>
-  
-<body>
 <?php
-
+include_once 'qc_home.html';
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -43,7 +40,7 @@ $dbname = "egway";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$query= "SELECT * from users where status is NULL";
+$query= "SELECT * FROM `users` WHERE `status` is NULL AND `role` = 'user'";
 $result= mysqli_query($conn,$query);
 $req_count=mysqli_num_rows($result);
 if($req_count>0){ 
@@ -77,7 +74,7 @@ if($req_count>0){
     <div class="card" style="width: 18rem;" id="<?php echo $row["natid"] ;?>">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title"><?php echo $row['Full Name'] ?></h5>
+    <h5 class="card-title"><?php echo $row['Name'] ?></h5>
     <p ><?php echo $row['natid'] ?></p>
     <p class="card-text"><?php echo $row['role'] ?></p>
     <small><i><?php echo $row['date_time'] ?></i></small>   <br>

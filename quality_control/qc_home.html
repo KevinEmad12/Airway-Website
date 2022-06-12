@@ -64,11 +64,11 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></scri
     <body>
         <div class="topnav">
             <p> welcome </p>
-                 <a href="report.html">report</a>
+                 <a href="report.php">report</a>
                  <a href="requests.php">requests</a>
                  <a href="cs.php">customer service</a>
-                 <a href="reviews.html">reviews</a>
-                 <a href="new_cs.html">new cs user</a>
+                 <a href="reviews.php">reviews</a>
+                 <a href="new_cs.php">new cs user</a>
                  <a href="log.php">Log</a>
                
        </div>
@@ -77,4 +77,16 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></scri
 
        
 </body>
+<script>
+    document.addEventListener("visibilitychange",function(){
+var stat =document.visibilityState;
+if(stat=="hidden"){
+document.title="focus on work!";
+}
+else {
+    document.title="Report";
+
+}
+});
+</script>
 </html>

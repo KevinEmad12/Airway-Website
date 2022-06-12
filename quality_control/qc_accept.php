@@ -9,7 +9,7 @@ $dbname = "egway";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 $query= "UPDATE `users` SET `status`='0' WHERE `natid`= ".$_POST['i']."";
-$result= mysqli_query($conn,$query);
+$result= $conn->query($query);
 echo "Updated successfully";
 
 ?>

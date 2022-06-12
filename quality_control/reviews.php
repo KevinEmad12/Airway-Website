@@ -1,31 +1,74 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
 
+<head>
+  <?php
+  
+  include_once 'qc_home.html'
+  
+  ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reviews</title>
 
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio0" autocomplete="off"  onclick=sort(0) >
+  <label class="btn btn-outline-primary" for="btnradio0">All</label>
+
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick=sort(1) >
+  <label class="btn btn-outline-primary" for="btnradio1">1 star</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick=sort(2) >
+  <label class="btn btn-outline-primary" for="btnradio2">2 stars</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick=sort(3) >
+  <label class="btn btn-outline-primary" for="btnradio3">3 stars</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" onclick=sort(4) >
+  <label class="btn btn-outline-primary" for="btnradio4">4 stars</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" onclick=sort(5) >
+  <label class="btn btn-outline-primary" for="btnradio5">5 stars</label>
+</div> 
+
+
+ <!--   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-primary">1</button>
+    <button type="button" class="btn btn-primary">2</button>
+    <button type="button" class="btn btn-primary">3</button>
+    <button type="button" class="btn btn-primary">4</button>
+    <button type="button" class="btn btn-primary">5</button>
+  </div>
+    </div>
+-->
+
+    
+    
+    
+    <script></script>
+</head>
+  
 <body>
-<?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "egway";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-$rate=$_POST['i'];
-if($rate==0){
-    $query= "SELECT * FROM reservations WHERE comment IS NOT NULL";
-}else{
-    $query= "SELECT * FROM reservations WHERE comment IS NOT NULL AND `rate` = '$rate' ";
-}
-
-$result= mysqli_query($conn,$query);
-$req_count=mysqli_num_rows($result);
-if($req_count>0){
-    ?>
-    <table class="table table-striped table-hover table-bordered">
+  
+<table class="table table-striped table-hover table-bordered " id="table">
         <tr>
         <th>name</th>
         <th>flight code</th>
@@ -33,28 +76,30 @@ if($req_count>0){
         <th>comment</th>
         <th>date</th>
         </tr>
+</table>
 
-        <?php 
-    while($row = $result->fetch_assoc()){
-        ?>
-<tr>
-    <td>    <h1><?php echo $row['name'] ?>  </h1>  </td>
-      <td>  <p> <?php echo $row['f_code'] ?>    </p></td>
-     <td>   <p> <?php echo $row['rate'] ?>  </p></td>
-     <td>   <p> <?php echo $row['comment'] ?>   </p> </td>
-    <td><small><i><?php echo $row['date'] ?>    </i></small> </td>
-    </tr>
+<script>
+function sort(rate){
+    
+   
+   $.ajax({
+        type: "POST",
+        url: 'reviewss.php',
+        data: {
+         i:rate
+        },
+        success:function(data)
+                 {
+                  document.getElementById('table').innerHTML=(data);                     
+                 }
 
-<?php
-    }
-    ?>
+   });
 
-    </table>
-    <?php
+
 }
-else{
-    echo "No Pending Requests.";
-}
-?>
+
+</script>
+
+
 </body>
 </html>

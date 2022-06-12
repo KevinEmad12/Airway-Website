@@ -14,6 +14,9 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></scri
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <head>
+<?php
+include_once 'qc_home.html'
+?>
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
 <input type="radio" class="btn-check" name="btnradio" id="btnradio0" autocomplete="off"  onclick=sort(3) >

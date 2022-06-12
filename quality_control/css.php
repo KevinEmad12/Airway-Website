@@ -27,6 +27,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></scri
 
 </div> 
 -->
+
+
 </head>
   
 <body>
@@ -80,7 +82,7 @@ if($req_count>0){
    
     <tr id="<?php echo $row["natid"] ;?>">
     
-    <td> <h4 ><?php echo $row['Full Name'] ?></h4> </td>
+    <td> <h4 ><?php echo $row['Name'] ?></h4> </td>
       <td> <p ><?php echo $row['natid'] ?></p> </td>
       <td><p ><?php echo $row['role'] ?></p> </td>
       <td>   <small><i><?php echo $row['date_time'] ?></i></small>  </td>
