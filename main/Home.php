@@ -139,29 +139,6 @@ if(isset($_SESSION['User']))
 
 <hr style="border-top: 4px dashed white;">
 
-<section style="border-radius: 30px  30px 30px 30px;" class="subscribe-area pb-50 pt-70">
-<div class="container">
-	<div class="row">
-	<div class="col-md-4">
-		<div class="subscribe-text">
-				<span>JOIN OUR NEWSLETTER</span>
-				<h2>Don't miss our offers!</h2>
-				</div>
-					</div>
-				     <div>
-				<div class="subscribe-wrapper subscribe2-wrapper">
-				<div class="subscribe-form">
-				<form method="POST">
-				<input type="email" id="email" name="email" placeholder="  Enter Your Email Address...">
-				<button>Subscribe <i class="fas fa-long-arrow-alt-right"></i></button>
-				</form>
-			</div>
-		</div>
-	</div>
-	</div>				
-
-</div>
-</section>
 </body>
 
 <?php require_once('/apps/xampp/htdocs/project/layout/footer.html'); ?>
@@ -278,19 +255,6 @@ if(isset($_SESSION['User']))
                 }
             );
         }
-        $("form").on("submit", function (e) {
-    var dataString = $(this).serialize();
-     
-    $.ajax({
-      type: "POST",
-      url: "NewsLetter.php",
-      data: dataString,
-      success: function () {
-        alert("Subscribed!");
-      }
-    });
- 
-    e.preventDefault();
-});
+
         </script>
         </html>
