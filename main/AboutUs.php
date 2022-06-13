@@ -10,7 +10,7 @@
 <title>About Us</title>
 
 <body>
- <?php  require_once('/apps/xampp/htdocs/project/layout/header.html'); ?>
+ <?php  require_once('/apps/xampp/htdocs/project/layout/header.php'); ?>
 
 </div>
 
