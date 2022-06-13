@@ -20,15 +20,26 @@ session_start();
   <div class="topnav-right">
 
 <?php
-if(!isset($_SESSION['User']) )
+if(isset($_SESSION['qc']))
 {
-  
-     echo "<a href='/project/account/inpage.php'><i class='fa fa-fw fa-user'></i>Sign up | Login</a>";
+  echo "<a href='/project/account/userdashboard.php'><i class='fa fa-fw fa-user'></i>";
+  echo $_SESSION['qc'];
+  echo "</a>";
+}
+else if (isset($_SESSION['cs']))
+{
+  echo "<a href='/project/account/userdashboard.php'><i class='fa fa-fw fa-user'></i>";
+  echo $_SESSION['cs'];
+  echo "</a>";
+}
+else if (isset($_SESSION['User'])){
+  echo "<a href='/project/account/userdashboard.php'><i class='fa fa-fw fa-user'></i>";
+  echo $_SESSION['User'];
+  echo "</a>";
 }
 else{
-    echo "<a href='/project/account/userdashboard.php'><i class='fa fa-fw fa-user'></i>";
-    echo $_SESSION['User'];
-    echo "</a>";
+  echo "<a href='/project/account/inpage.php'><i class='fa fa-fw fa-user'></i>Sign up | Login</a>";
+
 }
 ?>
 
