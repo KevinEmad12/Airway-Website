@@ -1,11 +1,5 @@
-<?php
-session_start();
-if(isset($_SESSION['User']))
-{
-    echo $_SESSION['User'];
-}
-?>
-<?php require_once('/apps/xampp/htdocs/project/layout/header.html'); ?>
+
+<?php require_once('/apps/xampp/htdocs/project/layout/header.php'); ?>
 <html>
 <head>
     <meta charset="UTF-8">
