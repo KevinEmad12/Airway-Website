@@ -30,7 +30,7 @@
         </div> 
         <div id="UserName" style="font-size: 0px; padding:0px; margin:0px;"><?php echo($_SESSION["User"]); ?></div>
         <div id="Book" class="Form">
-            <form method="GET" action="Trips.php">
+            <form method="GET" action="/project/Booking/Trips.php">
                 <input class="book" required="required" id="CityFrom" list="From" name="From" style="border-radius: 25px  0px 0px 25px;" placeholder="From..." onkeyup="FromC()">
                 <datalist id="From">
                 </datalist>
@@ -200,7 +200,7 @@
         function ShowTheFlight() {
             jQuery.ajax(
                 {
-                    url:"ShowFlight.php",
+                    url:"/project/Booking/ShowFlight.php",
                     data:"FCode="+document.getElementById('FCode').value,
                     type:"GET",
                     success:function(data)
@@ -213,7 +213,7 @@
         function ShowTheReservation() {
             jQuery.ajax(
                 {
-                    url:"ShowReservation.php",
+                    url:"/project/Booking/ShowReservation.php",
                     data:"RCode="+document.getElementById('RCode').value,
                     type:"GET",
                     success:function(data)
@@ -226,7 +226,7 @@
         function FromC() {
             jQuery.ajax(
                 {
-                    url:"FlightSearchAid.php",
+                    url:"/project/Booking/FlightSearchAid.php",
                     data:"City="+document.getElementById('CityFrom').value,
                     type:"GET",
                     success:function(data)
@@ -239,7 +239,7 @@
         function ToC() {
             jQuery.ajax(
                 {
-                    url:"FlightSearchAid.php",
+                    url:"/project/Booking/FlightSearchAid.php",
                     data:"City="+document.getElementById('CityTo').value,
                     type:"GET",
                     success:function(data)
