@@ -55,6 +55,7 @@
                     echo"<a href='csupdate.php'>Edit Reservation</a>";
                     echo"<a href='cssearchuser.php'>Search for User</a>";
                     echo"<a href='cssearchflight.php'>Search for Flight</a>";
+			echo"<a href='/project/account/logout.php'>Log Out </a>";
 				?>
 		</div>
 		<br><br>
