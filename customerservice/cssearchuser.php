@@ -34,7 +34,6 @@
             <th>Address</th>
             <th>Postal Code </th>
             <th>Country</th>
-            <th>Passport Number</th>
             <th>Nationality</th>
             <th>Date</th>
         </tr>";
