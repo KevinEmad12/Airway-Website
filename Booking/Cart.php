@@ -1,5 +1,8 @@
+<?php require_once('/apps/xampp/htdocs/project/layout/header.php'); ?>
+
 <html>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/project/main/mainstyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function Remove(ID)
@@ -33,7 +36,6 @@
     }
 </script>
     <?php
-    session_start();
     $conn = new mysqli("localhost", "root", "", "egway");
     // Check connection
     if ($conn->connect_error) {
