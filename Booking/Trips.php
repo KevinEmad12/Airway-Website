@@ -1,8 +1,11 @@
 <html>
 <link rel="stylesheet" href="styles.css">
-<?php
-    session_start();
-?>
+<link rel="stylesheet" href="/project/main/mainstyle.css">
+<?php require_once('/apps/xampp/htdocs/project/layout/header.php'); ?>
+
+<br>
+<br>
+<br>
 <Ul style="border: 3px solid; list-style: none; font-size:30px; text-align: left; position:fixed; top: 0%; right: 0%; background-color: white; padding:10px; ">
     <li>Search Details</li>
     <li>Trip type:<?php echo"<span id='TripType'>".$_GET['TripType']."</span>"; ?></li>
