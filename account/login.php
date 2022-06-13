@@ -41,12 +41,14 @@ if(isset($_POST['email']) || isset($_POST['password']))
     if($check1["role"] == "qc")
     {
       $response2['status'] = 1;
-      $response2['message'] = "<script>window.location = '/project/qc_home.html' </script>";
+      $_SESSION['qc'] = $email;
+      $response2['message'] = "<script>window.location = '/project/quality_control/qc_home.html' </script>";
     }
     else if($check2['role'] == "cs")
     {
       $response2['status'] = 1;
-      $response2['message'] = "<script>window.location = '/project/main/AboutUs.php' </script>";
+      $_SESSION['cs'] = $email;
+      $response2['message'] = "<script>window.location = '/project/customerservice/cshome.php' </script>";
     }
     else
     {
