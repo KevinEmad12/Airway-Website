@@ -43,7 +43,7 @@
         ?>
         <tr>
     
-        <td><?= $row['Full Name']; ?></td>
+        <td><?= $row['Name']; ?></td>
         <td><?= $row['Email']; ?></td>
         <td><?=  $row['Password']; ?></td>
         <td><?= $row['natid']; ?></td>
@@ -51,7 +51,6 @@
         <td><?= $row['address']; ?></td>
         <td><?= $row['postal_code']; ?></td>
         <td><?= $row['country']; ?></td>
-        <td><?= $row['passport_num']; ?></td>
         <td><?= $row['nationality']; ?></td>
         <td><?= $row['date_time']; ?></td>
         </tr>
