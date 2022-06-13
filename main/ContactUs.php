@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="mainstyle.css">
 </head>
 
-<?php require_once('/apps/xampp/htdocs/project/layout/header.html'); ?>
+<?php require_once('/apps/xampp/htdocs/project/layout/header.php'); ?>
 
 </div>
     <div class="container-contact">
@@ -63,7 +63,7 @@ $("form").on("submit", function (e) {
      
     $.ajax({
       type: "POST",
-      url: "ContactUs.php",
+      url: "ContactUsphp.php",
       data: dataString,
       success: function () {
         alert("Data Added Successfully");
