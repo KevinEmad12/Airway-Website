@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2022 at 05:38 AM
+-- Generation Time: Jun 13, 2022 at 06:34 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -86,7 +86,8 @@ INSERT INTO `reservations` (`name`, `rev_num`, `f_code`, `f_code2`, `f_code3`, `
 ('Guest', 5447, 'LO0001PA', 'PA0001CA', '', 3, 'bad staff', 2, '2022-06-11 14:08:19', 7900, 'Ordered', 0),
 ('Guest', 11111, 'LO0001PA', 'PA0001CA', '', 4, 'nice', NULL, '2022-06-11 14:08:19', 7900, 'Ordered', 0),
 ('Guest', 424011, 'LO0001PA', 'PA0001CA', '', 1, 'could not open emergency exit for air', 1, '2022-06-11 14:08:19', 7900, 'Ordered', 0),
-('mamdoh@gmail.com', 424014, 'LO0001CA', '', '', NULL, NULL, NULL, '2022-06-12 17:09:38', 5500, NULL, 0);
+('mamdoh@gmail.com', 424014, 'LO0001CA', '', '', NULL, NULL, NULL, '2022-06-12 17:09:38', 5500, NULL, 0),
+('samol@gmail.com', 424017, 'CA0001LO', '', '', NULL, NULL, NULL, '2022-06-13 06:25:18', 8800, 'Ordered', 0);
 
 -- --------------------------------------------------------
 
@@ -157,11 +158,13 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`Name`, `Email`, `Password`, `natid`, `phone_num`, `address`, `postal_code`, `country`, `nationality`, `role`, `cs_status`, `cs_comment`, `status`, `date_time`) VALUES
 ('name cs', 'cs@gmail.com', '202cb962ac59075b964b07152d234b70', '0001', NULL, NULL, NULL, '', '', 'cs', NULL, '', NULL, '2022-06-12 16:42:50'),
-('mamdoh', 'mamdoh@gmail.com', '202cb962ac59075b964b07152d234b70', '2020', NULL, NULL, NULL, '', '', 'user', NULL, '', NULL, '2022-06-12 16:52:52'),
-('mohammed', 'mohammed@gmail.com', '202cb962ac59075b964b07152d234b70', '0002', NULL, NULL, NULL, '', '', 'user', NULL, '', NULL, '2022-06-12 16:45:08'),
+('kevin emad', 'kevin@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '8888', '0123455677', 'kevin city', '8877', 'usa', 'eg', 'user', NULL, '', NULL, '2022-06-13 06:13:46'),
+('mamdoh', 'mamdoh@gmail.com', 'b706835de79a2b4e80506f582af3676a', '0003', NULL, NULL, NULL, '', '', 'user', NULL, '', NULL, '2022-06-13 06:16:09'),
+('Mohammed Nasr', 'nasr@gmail.com', '202cb962ac59075b964b07152d234b70', '0007', '01203559189', 'Obour City', '9999', 'Egypt', 'egyptian', 'user', NULL, '', NULL, '2022-06-13 06:02:50'),
+('cs user from qc', 'newcs@gmail.com', '123', '00123123', '01203559189', 'addressidk', '9999222', 'paris', 'german', 'cs', 0, '', NULL, '2022-06-13 06:06:32'),
 ('name qc', 'qc@gmail.com', '202cb962ac59075b964b07152d234b70', '0000', NULL, NULL, NULL, '', '', 'qc', NULL, '', NULL, '2022-06-12 16:40:04'),
-('salwa mustafa', 'salwa@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '00022', '01203559189', 'obour', '9999', 'egypt', 'eg', 'user', NULL, '', NULL, '2022-06-12 17:29:12'),
-('test', 'test@gmail.com', '202cb962ac59075b964b07152d234b70', '88888', NULL, NULL, NULL, '', '', 'user', NULL, '', NULL, '2022-06-13 05:34:01');
+('samoooool', 'samol@gmail.com', 'e99a18c428cb38d5f260853678922e03', '000882', NULL, NULL, NULL, '', '', 'user', NULL, '', NULL, '2022-06-13 06:16:49'),
+('yossef', 'yossef@gmail.com', 'eaf1f86c02f9d16ebcaa853220c122e5', '00123321', NULL, NULL, NULL, '', '', 'user', NULL, '', NULL, '2022-06-13 06:34:29');
 
 --
 -- Indexes for dumped tables
@@ -200,7 +203,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `rev_num` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=424015;
+  MODIFY `rev_num` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=424018;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
