@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-if(isset($_SESSION['User']))
+if(isset($_SESSION['User']) || isset($_SESSION['qc']) || isset($_SESSION['cs']))
 {
     session_destroy();
-    header("Location:inpage.php");
+    header("Location:/project/account/inpage.php");
 }
 
 ?>
