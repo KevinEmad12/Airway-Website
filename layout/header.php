@@ -22,13 +22,13 @@ session_start();
 <?php
 if(isset($_SESSION['qc']))
 {
-  echo "<a href='/project/account/userdashboard.php'><i class='fa fa-fw fa-user'></i>";
+  echo "<a href='/project/quality_control/qc_home.html'><i class='fa fa-fw fa-user'></i>";
   echo $_SESSION['qc'];
   echo "</a>";
 }
 else if (isset($_SESSION['cs']))
 {
-  echo "<a href='/project/account/userdashboard.php'><i class='fa fa-fw fa-user'></i>";
+  echo "<a href='/project/customerservice/cshome.php'><i class='fa fa-fw fa-user'></i>";
   echo $_SESSION['cs'];
   echo "</a>";
 }
