@@ -15,7 +15,7 @@
                 <input type="password"  name="new_password" placeholder="Password" required/>
                 <input type="password" name="confirmpass" placeholder="Confrim Password" required/>
                 <input type="number" name="new_id" placeholder="National ID number" required/>
-                <input type="file" name="new_pic" accept="image/png, image/jpeg" />
+                <input type="file" name="file" accept = "image/png,image/jpeg,image/jpg" required/>
                     <label for="familysb">Family members:</label>
                     <select id="familysb">
                       <option value="0">0</option>
@@ -96,7 +96,6 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#myForm").on('submit',function(e){
         e.preventDefault();
-       
         $.ajax({
             type: "POST",
             url: "signup.php",
@@ -126,6 +125,8 @@ $(document).ready(function(){
         });
     });
 });
+
+
 </script>
 </body>
 </html>
